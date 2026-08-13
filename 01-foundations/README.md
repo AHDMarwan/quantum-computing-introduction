@@ -30,6 +30,19 @@ Each step introduces ideas needed by the next one.
 7. [Density Matrices and Mixed States](07-density-matrices.md)
 8. [Measurements and POVMs](08-measurements-and-povms.md)
 
+## Visual intuition
+
+Several ideas in this section are easier to understand geometrically than from equations alone. A Plotly-generated visual guide is available in [Educational Figures](../assets/figures/README.md).
+
+The first visual set covers:
+
+- a pure qubit on the Bloch sphere,
+- pure and mixed states in the Bloch ball,
+- measurement directions as Bloch-sphere axes,
+- and the four basis states produced by a two-qubit tensor product.
+
+These figures are complements to the derivations, not replacements for them.
+
 ## How the chapters are written
 
 The core foundations chapters are designed as lecture notes rather than short encyclopedia entries. Where appropriate they include:
@@ -83,6 +96,7 @@ For each chapter:
 4. Answer the conceptual exercises in prose.
 5. Solve the computational exercises explicitly.
 6. Try the challenge exercises only after the main ideas feel comfortable.
+7. Use the visual guide after the derivation to connect the algebra to the geometry.
 
 A useful checkpoint is that you should be able to move freely between
 
