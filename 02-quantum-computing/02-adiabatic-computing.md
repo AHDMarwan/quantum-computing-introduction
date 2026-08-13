@@ -13,17 +13,21 @@ The schedule $s=s(t)$ controls the interpolation.
 
 ## 2. Adiabatic condition
 
-Informally, if the evolution is sufficiently slow compared with inverse powers of the relevant spectral gap, transitions out of the target instantaneous eigenspace can be suppressed. The exact conditions depend on the chosen adiabatic theorem, smoothness assumptions, and gap structure.
+Informally, if the evolution is sufficiently slow compared with inverse powers of the relevant spectral gap, transitions out of the target instantaneous eigenspace can be suppressed. The exact conditions depend on the chosen adiabatic theorem, smoothness assumptions, schedule, and gap structure.
 
-The minimum spectral gap
+When the instantaneous ground state is nondegenerate, a common gap definition is
 
 ```math
-\Delta_{\min}
-=
-\min_s(E_1(s)-E_0(s))
+\Delta(s)=E_1(s)-E_0(s),
 ```
 
-therefore plays a central role in runtime estimates.
+with
+
+```math
+\Delta_{\min}=\min_s\Delta(s).
+```
+
+If the ground space is degenerate, the relevant gap is instead the spectral separation between that ground-state subspace and the rest of the spectrum. The simple expression $E_1-E_0$ therefore assumes a nondegenerate ground state.
 
 ## 3. Computational equivalence
 
