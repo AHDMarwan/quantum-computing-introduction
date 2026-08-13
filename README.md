@@ -5,6 +5,8 @@ A structured educational introduction to **quantum information science (QIS)**, 
 The goal of this repository is to make the field easier to learn without flattening the mathematics. It separates mathematical foundations, computational models, hardware platforms, algorithms, variational methods, quantum information theory, and QML so that the relationships between them remain clear.
 
 > **Format:** all scientific content is stored in Markdown (`.md`) files and rendered directly on GitHub.
+>
+> **Web entry point:** [`index.html`](index.html) provides a lightweight landing page for the repository and can be published directly with GitHub Pages.
 
 ## Who is this for?
 
@@ -97,19 +99,19 @@ Study canonical examples of how interference, phase, Fourier structure, and cohe
 
 ## 5. Variational Quantum Algorithms
 
-Learn how parameterized circuits and classical optimization are combined.
+Connect parameterized circuits to hybrid quantum–classical optimization.
 
 - [Section index](05-variational-quantum-algorithms/README.md)
-- [PQC and Ansatz](05-variational-quantum-algorithms/01-pqc-and-ansatz.md)
+- [Parameterized Quantum Circuits and Ansätze](05-variational-quantum-algorithms/01-pqc-and-ansatz.md)
 - [Variational Principle and Hybrid Loop](05-variational-quantum-algorithms/02-variational-principle.md)
-- [VQE](05-variational-quantum-algorithms/03-vqe.md)
-- [QAOA](05-variational-quantum-algorithms/04-qaoa.md)
-- [Optimization and Gradients](05-variational-quantum-algorithms/05-optimization-and-gradients.md)
-- [Barren Plateaus and Trainability](05-variational-quantum-algorithms/06-barren-plateaus.md)
+- [Variational Quantum Eigensolver](05-variational-quantum-algorithms/03-vqe.md)
+- [Quantum Approximate Optimization Algorithm](05-variational-quantum-algorithms/04-qaoa.md)
+- [Optimization, Gradients, and Measurement Cost](05-variational-quantum-algorithms/05-optimization-and-gradients.md)
+- [Barren Plateaus](05-variational-quantum-algorithms/06-barren-plateaus.md)
 
 ## 6. Quantum Information Theory
 
-Develop the language of states, channels, entropy, communication, resources, and error correction.
+Develop the information-theoretic language behind states, channels, communication, resources, and error correction.
 
 - [Section index](06-quantum-information-theory/README.md)
 - [Quantum Channels](06-quantum-information-theory/01-quantum-channels.md)
@@ -121,76 +123,76 @@ Develop the language of states, channels, entropy, communication, resources, and
 
 ## 7. Quantum Machine Learning
 
-Learn the main QML paradigms and the distinctions among data encoding, trainable circuits, kernels, structured models, learning from quantum data, trainability, generalization, and quantum advantage.
+Study QML as a broad learning field rather than as a synonym for trainable quantum circuits.
 
 - [Section index](07-quantum-machine-learning/README.md)
-- [What Is QML?](07-quantum-machine-learning/01-what-is-qml.md)
+- [What Is Quantum Machine Learning?](07-quantum-machine-learning/01-what-is-qml.md)
 - [Data Access and Quantum Encoding](07-quantum-machine-learning/02-data-encoding.md)
-- [PQC, VQC, and QNN Terminology](07-quantum-machine-learning/03-pqc-vqc-qnn.md)
+- [PQC, VQC, QNN, and Related Terminology](07-quantum-machine-learning/03-pqc-vqc-qnn.md)
 - [Quantum Kernel Methods](07-quantum-machine-learning/04-quantum-kernels.md)
-- [QCNNs and Structured Architectures](07-quantum-machine-learning/05-qcnn.md)
+- [Quantum Convolutional and Structured Architectures](07-quantum-machine-learning/05-qcnn.md)
 - [Quantum Generative Models](07-quantum-machine-learning/06-generative-qml.md)
 - [Quantum Reservoir Computing](07-quantum-machine-learning/07-quantum-reservoir-computing.md)
 - [Quantum Reinforcement Learning](07-quantum-machine-learning/08-quantum-reinforcement-learning.md)
 - [Quantum Learning Theory](07-quantum-machine-learning/09-quantum-learning-theory.md)
 - [Learning from Quantum Data](07-quantum-machine-learning/10-learning-from-quantum-data.md)
-- [Generalization](07-quantum-machine-learning/11-generalization.md)
-- [Trainability](07-quantum-machine-learning/12-trainability.md)
+- [Generalization in Quantum Machine Learning](07-quantum-machine-learning/11-generalization.md)
+- [Trainability in Quantum Machine Learning](07-quantum-machine-learning/12-trainability.md)
 - [Quantum Advantage in Learning](07-quantum-machine-learning/13-quantum-advantage.md)
 
 ## 8. Reference
 
-Use these files when a symbol or acronym becomes unclear.
+Use this section to keep notation and terminology consistent across the repository.
 
-- [Reference index](08-reference/README.md)
+- [Section index](08-reference/README.md)
 - [Notation](08-reference/notation.md)
 - [Terminology Map](08-reference/terminology-map.md)
 - [Glossary](08-reference/glossary.md)
 - [Bibliography](08-reference/bibliography.md)
+- [Educational Figure Guide](assets/figures/README.md)
 
-## A terminology rule used throughout the book
+## Repository conventions
 
-The repository keeps the following levels separate:
+This repository distinguishes carefully between:
 
-```math
-\boxed{
-\text{physical platform}
-\neq
-\text{computational model}
-\neq
-\text{circuit object}
-\neq
-\text{optimization paradigm}
-\neq
-\text{task}
-}
+```text
+hardware platform
+!= computational model
+!= computational object
+!= ansatz / representation family
+!= optimization paradigm
+!= task
 ```
 
-In particular:
+For example:
 
-- a **PQC** is a parameterized circuit;
-- an **ansatz** is a candidate family;
-- a **VQA** is a hybrid optimization framework;
-- **VQE** and **QAOA** are specific VQAs;
-- **QML** is a broad field;
-- a **QNN** is architecture-dependent terminology, not one uniquely defined mathematical object.
+```text
+PQC = parameterized circuit object
+ansatz = candidate state / transformation family
+VQA = hybrid optimization framework
+VQE = a specific VQA for eigenvalue problems
+QAOA = a structured VQA for optimization
+VQC = expanded on first use because the acronym is ambiguous
+QNN = broad architecture-dependent terminology
+QML = the full research field
+```
 
-See the [Terminology Map](08-reference/terminology-map.md) for a compact summary.
+See the [Terminology Map](08-reference/terminology-map.md) for the repository-wide convention.
 
-## Educational principles
+## Mathematical formatting
 
-The text follows a few simple rules:
+For GitHub compatibility:
 
-1. Introduce intuition before using heavy notation where possible.
-2. State assumptions explicitly.
-3. Distinguish mathematical models from physical hardware.
-4. Explain what an equation means, not only how to manipulate it.
-5. Include worked examples and exercises where they add value.
-6. Distinguish established results from common heuristics or oversimplifications.
-7. Treat quantum advantage carefully, while keeping the presentation accessible to learners.
+- inline math uses `$...$`,
+- display math uses fenced `math` blocks,
+- notation is centralized in [notation.md](08-reference/notation.md).
 
-Primary papers, major reviews, textbooks, and formal standards are prioritized in the references. General quantum-computing vocabulary is aligned where possible with [ISO/IEC 4879:2024](https://www.iso.org/standard/80432.html).
+## Reading philosophy
 
-## Status
+The repository aims to answer three questions repeatedly:
 
-The repository now contains a complete first educational pass from quantum-information foundations to quantum machine learning. Future revisions should primarily improve pedagogy: clearer examples, additional exercises and solutions, diagrams, cross-links, and explanations of common points of confusion.
+1. **What is the mathematical object?**
+2. **What operational or computational role does it play?**
+3. **What should not be confused with it?**
+
+This is especially important in quantum computing, where hardware names, computational models, algorithms, circuit families, and learning terminology are often discussed in the same sentence even though they describe different conceptual levels.
