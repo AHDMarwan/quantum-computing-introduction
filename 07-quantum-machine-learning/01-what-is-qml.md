@@ -2,144 +2,60 @@
 
 ## 1. Scope
 
-Quantum machine learning (QML) studies learning problems in which **quantum information processing, quantum models, quantum data, or quantum access models** play a substantive role.
+Quantum machine learning (QML) is the broad area where **machine learning** and **quantum information processing** meet.
 
-It is a research field, not a single algorithm.
+It can mean several different things:
 
-QML includes both
+- using a quantum computer as part of a learning algorithm,
+- using trainable quantum models,
+- using quantum systems to define kernels or feature maps,
+- learning directly from quantum states or processes,
+- or studying how learning theory changes when information is quantum.
 
-```text
-using quantum systems to perform learning
-```
-
-and
-
-```text
-learning properties of quantum systems.
-```
-
-These two directions overlap but are not identical.
+QML is therefore **not one algorithm** and it is not equivalent to “training a quantum neural network.”
 
 ## 2. Learning objectives
 
 After this chapter, you should be able to:
 
-- define QML without reducing it to variational circuits,
-- classify QML problems by data type and computational model,
-- distinguish training data access from model architecture,
-- write a generic supervised quantum model mathematically,
-- identify encoding, hypothesis class, measurement, loss, and optimizer as separate components,
-- distinguish training complexity from inference complexity,
-- identify multiple notions of quantum learning advantage,
-- and formulate a QML problem using explicit resource assumptions.
+- explain what QML includes,
+- distinguish classical-data and quantum-data learning,
+- identify the main components of a QML pipeline,
+- distinguish a PQC, VQC, QNN, and quantum kernel at a high level,
+- explain the role of measurement in a quantum model,
+- distinguish training from inference,
+- and explain what “quantum advantage” can mean without overinterpreting it.
 
-## 3. A machine-learning problem first
+## 3. Start from machine learning
 
-Before introducing anything quantum, a learning problem requires:
+A supervised learning problem usually contains:
 
 - an input space $\mathcal X$,
-- an output/target space $\mathcal Y$,
-- a data-generating distribution or experiment,
-- a hypothesis/model class $\mathcal F$,
+- a target space $\mathcal Y$,
+- training examples $(x_i,y_i)$,
+- a model $f_\theta$,
 - a loss function,
-- a training procedure,
-- a success criterion.
+- and a training procedure.
 
-For supervised learning, a classical predictor is
-
-```math
-f_\theta:
-\mathcal X\rightarrow\mathcal Y.
-```
-
-Training often minimizes empirical risk
+A classical model can be written as
 
 ```math
-\widehat R_S(\theta)
-=
-\frac1m
-\sum_{i=1}^{m}
-\ell(f_\theta(x_i),y_i).
+f_\theta:\mathcal X\rightarrow\mathcal Y.
 ```
 
-A quantum learner changes one or more components of this pipeline.
+Training adjusts $\theta$ so that predictions improve on the task.
 
-## 4. Four broad QML settings
+QML changes one or more parts of this pipeline by introducing quantum states, quantum operations, quantum measurements, or quantum data.
 
-A useful first taxonomy separates the nature of the data and the processing.
+## 4. Classical data with quantum processing
 
-### Classical data, quantum processing
-
-Input begins as classical information:
+Suppose the input is a classical vector
 
 ```math
-x\in\mathcal X.
+x\in\mathbb R^d.
 ```
 
-It must be encoded into a quantum system before quantum processing.
-
-Typical examples:
-
-- variational quantum classifiers,
-- quantum kernels,
-- quantum generative models for classical distributions.
-
-### Quantum data, quantum processing
-
-The learner directly receives quantum objects such as
-
-```math
-\rho_x,
-```
-
-```math
-|\psi_x\rangle,
-```
-
-or access to a channel
-
-```math
-\mathcal E_x.
-```
-
-Here the learner may preserve coherence that would be lost by immediate measurement.
-
-### Quantum-generated data, classical learning
-
-A quantum experiment produces classical measurement records
-
-```math
-y_1,y_2,\ldots,y_N,
-```
-
-which are then processed by an ordinary classical learner.
-
-Many scientifically important quantum-learning tasks use this pipeline without requiring a quantum learning model.
-
-### Hybrid quantum-classical learning
-
-A pipeline can combine:
-
-```text
-classical preprocessing
--> quantum encoding
--> quantum dynamics
--> measurement
--> classical postprocessing
--> classical optimizer.
-```
-
-Most practical QML architectures are hybrid in some sense.
-
-## 5. Standard variational QML pipeline
-
-A common supervised model starts with
-
-```math
-|0\rangle^{\otimes n}.
-```
-
-A data-encoding unitary prepares
+Before a quantum processor can use it, the information must be encoded into a quantum state or quantum operation. A common form is
 
 ```math
 |\phi(x)\rangle
@@ -147,7 +63,7 @@ A data-encoding unitary prepares
 U_\phi(x)|0\rangle^{\otimes n}.
 ```
 
-A trainable circuit then gives
+A trainable circuit may then process the encoded state:
 
 ```math
 |\psi(x,\theta)\rangle
@@ -155,7 +71,7 @@ A trainable circuit then gives
 U(\theta)|\phi(x)\rangle.
 ```
 
-Finally, an observable $M$ produces
+Finally, an observable $M$ is measured:
 
 ```math
 f_\theta(x)
@@ -163,412 +79,247 @@ f_\theta(x)
 \langle\psi(x,\theta)|M|\psi(x,\theta)\rangle.
 ```
 
-Equivalently,
+This is the standard variational-QML picture.
 
-```math
-f_\theta(x)
-=
-\langle0|
-U_\phi^\dagger(x)
-U^\dagger(\theta)
-M
-U(\theta)
-U_\phi(x)
-|0\rangle.
+A useful diagram is
+
+```text
+classical input
+→ quantum encoding
+→ trainable quantum circuit
+→ measurement
+→ classical prediction
+→ loss
+→ optimizer
 ```
 
-This is one important family of QML models, but it is not the definition of QML.
+Not every QML method follows this structure, but it is an important starting point.
 
-## 6. More general channel model
+## 5. Quantum data
 
-The unitary assumption can be relaxed.
+QML can also begin with data that are already quantum.
 
-A general parameterized quantum learner can be written
+Examples include
 
 ```math
-\rho_x
-\xrightarrow{\mathcal E_\theta}
-\sigma_{x,\theta}
-\xrightarrow{\{E_y\}}
-y.
+\rho,
+\qquad
+|\psi\rangle,
+\qquad
+\mathcal E,
+\qquad
+H.
 ```
 
-Prediction probabilities are
+The task may be to:
+
+- distinguish quantum states,
+- predict observables,
+- classify phases of matter,
+- learn a Hamiltonian,
+- identify a quantum channel,
+- or learn a dynamical process.
+
+This setting is conceptually different from encoding a classical vector into qubits. The information is quantum from the beginning.
+
+## 6. Four broad settings
+
+A simple classification is:
+
+### 6.1 Classical data, quantum processing
+
+```text
+classical data
+→ quantum encoding
+→ quantum model
+→ classical output
+```
+
+Examples: variational classifiers and quantum kernels.
+
+### 6.2 Quantum data, quantum processing
+
+```text
+quantum states or processes
+→ quantum processing
+→ prediction
+```
+
+Examples: state discrimination and learning from quantum experiments.
+
+### 6.3 Quantum experiment, classical learning
+
+```text
+quantum experiment
+→ measurement outcomes
+→ classical machine learning
+```
+
+The learner itself may be completely classical.
+
+### 6.4 Hybrid learning
+
+A practical system may combine classical preprocessing, quantum circuits, measurements, and classical optimization.
+
+Most real QML workflows are hybrid in some form.
+
+## 7. The measurement is part of the model
+
+A general quantum prediction can be written as
 
 ```math
 p_\theta(y|x)
 =
 \mathrm{Tr}
 \left[
-E_y
-\mathcal E_\theta(\rho_x)
+E_y\,\mathcal E_\theta(\rho_x)
 \right].
 ```
 
-The map $\mathcal E_\theta$ may include:
+This separates three objects:
 
-- unitary gates,
-- noise or dissipation,
-- resets,
-- mid-circuit measurements,
-- adaptive control,
-- interactions with ancillas.
-
-This channel-level description is more general than a PQC-only definition.
-
-## 7. The measurement is part of the model
-
-In many QML descriptions, the trainable circuit receives most attention while the readout is treated as fixed.
-
-But the prediction depends jointly on state and measurement:
-
-```math
-p(y)
-=
-\mathrm{Tr}(E_y\rho).
+```text
+input state
+→ quantum transformation
+→ measurement
 ```
 
-One can therefore imagine learning:
+where:
 
-- the state preparation,
-- the channel,
-- the measurement,
-- or several of these simultaneously.
+- $\rho_x$ represents the input,
+- $\mathcal E_\theta$ is the quantum processing step,
+- $E_y$ is a measurement effect associated with output $y$.
 
-This is important when searching for QML architectures beyond standard VQCs.
+This form is more general than a unitary circuit followed by a fixed Pauli measurement.
 
-## 8. Hypothesis class
+## 8. Main QML families
 
-A QML architecture induces a family of functions or conditional distributions.
+### Variational quantum models
 
-For expectation-value models,
+A parameterized quantum circuit is trained using a loss function and a classical optimizer.
 
-```math
-\mathcal F
-=
-\left\{
-f_\theta(x):\theta\in\Theta
-\right\}.
-```
+### Quantum kernels
 
-For probabilistic models,
-
-```math
-\mathcal P
-=
-\left\{
-p_\theta(y|x):\theta\in\Theta
-\right\}.
-```
-
-The central learning-theory questions are therefore familiar:
-
-- What can the class represent?
-- Can it be optimized?
-- How many examples are required?
-- Does it generalize?
-- Can a classical model represent the same class efficiently?
-
-## 9. Training loss
-
-A classifier may use cross-entropy,
-
-```math
-\mathcal L(\theta)
-=
--\frac1m
-\sum_i
-\log p_\theta(y_i|x_i).
-```
-
-A regressor may use squared loss,
-
-```math
-\mathcal L(\theta)
-=
-\frac1m
-\sum_i
-\left(
-f_\theta(x_i)-y_i
-\right)^2.
-```
-
-A quantum-state learner may instead optimize fidelity or an information-theoretic objective.
-
-Thus the same quantum model family can support very different learning semantics depending on the loss.
-
-## 10. Training versus inference
-
-Training cost and inference cost should be separated.
-
-A model may require expensive training but cheap prediction, or the reverse.
-
-For a variational model, training can involve
-
-```math
-N_{\mathrm{epochs}}
-\times
-N_{\mathrm{data}}
-\times
-N_{\mathrm{gradient\ settings}}
-\times
-N_{\mathrm{shots}}.
-```
-
-After training, one prediction may require only a few circuit evaluations.
-
-A quantum advantage claim should specify which stage is being improved.
-
-## 11. Quantum kernels
-
-Quantum kernel methods often do not train a parameterized quantum circuit.
-
-A quantum processor estimates
+A quantum computer estimates a similarity such as
 
 ```math
 K(x,x')
-```
-
-and the learning optimization can remain classical.
-
-Therefore
-
-```math
-\text{QML}
-\not\subset
-\text{variational PQCs only}.
-```
-
-## 12. Quantum generative learning
-
-A quantum model can learn a distribution rather than a label function.
-
-Measurement of
-
-```math
-|\psi_\theta\rangle
 =
-\sum_x\psi_\theta(x)|x\rangle
+|\langle\phi(x)|\phi(x')\rangle|^2.
 ```
 
-produces
+The final learning algorithm may then be classical, such as an SVM.
+
+### Structured quantum models
+
+Architectures such as QCNNs incorporate locality, hierarchy, symmetry, or graph structure.
+
+### Quantum generative models
+
+A quantum state can define a probability distribution through the Born rule:
 
 ```math
 p_\theta(x)
 =
-|\psi_\theta(x)|^2.
+|\langle x|\psi_\theta\rangle|^2.
 ```
 
-This creates quantum Born machines and other generative architectures.
+### Quantum reservoir computing
 
-## 13. Quantum reservoir computing
+A fixed quantum dynamical system generates features, while a simpler classical readout is trained.
 
-A quantum system can act as a fixed nonlinear dynamical feature generator while only a classical readout is trained.
+### Quantum reinforcement learning
 
-This is structurally different from a fully trainable PQC.
+Quantum components can appear in policies, value models, environment interactions, or the environment itself.
 
-It also raises a different advantage question: whether physical quantum dynamics provide useful temporal features at favorable cost.
+### Learning from quantum data
 
-## 14. Quantum reinforcement learning
+The inputs are states, channels, Hamiltonians, or dynamical processes rather than ordinary classical vectors.
 
-In quantum RL, the quantum component can appear in:
+## 9. PQC, VQC, and QNN
 
-- policy representation,
-- value estimation,
-- environment access,
-- coherent interaction protocols,
-- or the environment itself.
+These terms are often confused.
 
-A “quantum RL” label is incomplete until these roles are specified.
-
-## 15. Learning from quantum data
-
-A particularly natural QML setting is
+A **PQC** is a parameterized quantum circuit:
 
 ```math
-\rho
-\rightarrow
-\text{quantum learner}
-\rightarrow
-\text{prediction}.
+U(\theta).
 ```
 
-Possible tasks include:
+A **VQC**, in this repository, means a variational quantum classifier when the task is classification.
 
-- state discrimination,
-- observable prediction,
-- phase recognition,
-- Hamiltonian learning,
-- process learning,
-- channel discrimination.
+A **QNN** is a broad architecture-dependent term. Different papers use it differently.
 
-Here quantum processing may avoid the information loss caused by first converting all quantum data to classical measurement transcripts.
+A **VQA** is a variational quantum algorithm: the full hybrid optimization framework.
 
-## 16. The access model is part of the problem
-
-Two algorithms can appear to solve the same learning task while receiving fundamentally different inputs.
-
-Examples of access include:
+Therefore
 
 ```text
-classical samples
-random classical queries
-coherent oracle queries
-QRAM-style access
-copies of a quantum state
-adaptive experiments
-coherent quantum memory across examples.
+PQC = circuit object
+VQA = optimization framework
+VQC = a classifier using a variational quantum model
+QNN = broad architectural terminology
+QML = the whole field
 ```
 
-A complexity comparison is meaningful only when these access models are matched or their differences are explicitly priced.
+The dedicated terminology chapter develops these distinctions in more detail.
 
-## 17. What can “quantum advantage” mean?
+## 10. Training and inference are different
 
-Different papers use the word advantage for different resources.
+Training a model may require many repeated circuit executions.
 
-Possible meanings include:
-
-### Runtime advantage
-
-```math
-T_Q(n)
-<
-T_C(n)
-```
-
-asymptotically or in a defined practical regime.
-
-### Query advantage
-
-Fewer calls to a black-box oracle.
-
-### Sample or copy advantage
-
-Fewer training examples, quantum-state copies, or physical experiments.
-
-### Communication advantage
-
-Less information exchanged between distributed parties.
-
-### Representational advantage
-
-A quantum model represents a target compactly while a restricted classical model requires much larger size.
-
-### Approximation advantage
-
-For the same resource budget, the quantum model achieves lower error.
-
-These are distinct claims.
-
-## 18. Representation is not learning advantage
-
-Suppose a quantum circuit can represent a function using polynomial size while a particular classical architecture requires exponential size.
-
-That establishes a representational separation only if proved under the specified model classes.
-
-To obtain an end-to-end learning advantage, one still needs efficient:
-
-- data access,
-- training,
-- measurement,
-- inference.
-
-Thus
-
-```math
-\text{representation advantage}
-\not\Rightarrow
-\text{training advantage}.
-```
-
-## 19. Benchmark hierarchy
-
-A useful hierarchy of evidence is:
+For example, a variational model can require repeated evaluation over
 
 ```text
-quantum model runs
-<
-quantum model fits data
-<
-quantum model beats one baseline
-<
-advantage persists under tuned strong baselines
-<
-advantage persists under matched resource accounting
-<
-scaling separation
-<
-proved separation under explicit assumptions.
+data points
+× optimizer steps
+× gradient settings
+× measurement shots
 ```
 
-The levels should not be presented as interchangeable.
+while inference after training may require only a small number of circuit evaluations.
 
-## 20. Classical baselines
+Therefore training cost and prediction cost should be discussed separately.
 
-The strongest classical competitor depends on task structure.
+## 11. Expressivity, trainability, and generalization
 
-Relevant baselines can include:
+These three ideas are related but not identical.
 
-- linear/logistic models,
-- classical kernels,
-- random features,
-- neural networks,
-- tensor networks,
-- graph neural networks,
-- classical shadows,
-- specialized physics algorithms,
-- quantum-inspired algorithms.
+### Expressivity
 
-A small generic neural network is not a universal classical baseline.
+Can the model represent the target function or distribution?
 
-## 21. Common misconceptions
+### Trainability
 
-### “QML means putting a neural network on a quantum computer.”
+Can useful parameter values be found efficiently enough?
 
-No. QML includes kernels, learning theory, reservoir methods, quantum-data learning, process learning, and more.
+### Generalization
 
-### “Any trainable PQC is automatically a QNN.”
+Does the trained model perform well on unseen examples?
 
-Terminology varies. The architecture should be defined explicitly.
+A model can be highly expressive but difficult to train. It can also train easily but generalize poorly.
 
-### “Exponential Hilbert-space dimension gives exponential learning capacity for free.”
+## 12. What can quantum advantage mean?
 
-No. Encoding, measurement, trainability, and accessible information constrain usefulness.
+The phrase “quantum advantage” can refer to several different resources:
 
-### “Higher quantum-model accuracy proves quantum advantage.”
+- runtime,
+- query complexity,
+- number of samples or quantum-state copies,
+- memory,
+- communication,
+- representation size,
+- or approximation quality.
 
-Not without strong baselines and fair resource accounting.
+These meanings should not be mixed together.
 
-### “Classical data and quantum data are equivalent inputs once encoded.”
+For example, a quantum model using fewer parameters than one restricted classical model does not automatically imply a faster training algorithm.
 
-No. Encoding classical data can be costly, while native quantum data may contain information that is lost through classicalization.
+The dedicated [Quantum Advantage in Learning](13-quantum-advantage.md) chapter develops this topic carefully.
 
-## 22. A rigorous QML specification template
+## 13. Worked example: a binary variational classifier
 
-For every QML problem, write:
-
-```text
-Task:
-Data type:
-Data-access model:
-Quantum representation:
-Hypothesis class:
-Trainable objects:
-Measurement/readout:
-Loss:
-Optimizer:
-Training resource:
-Inference resource:
-Classical baseline:
-Claimed quantum resource:
-Success criterion:
-```
-
-If several fields are missing, the advantage claim is probably under-specified.
-
-## 23. Worked example: binary variational classifier
-
-Let
+Suppose
 
 ```math
 x\in\mathbb R^d,
@@ -576,7 +327,7 @@ x\in\mathbb R^d,
 y\in\{-1,+1\}.
 ```
 
-Encode
+Encode the data as
 
 ```math
 |\phi(x)\rangle
@@ -584,7 +335,15 @@ Encode
 U_\phi(x)|0\rangle^{\otimes n}.
 ```
 
-Apply trainable circuit $W(\theta)$ and measure $Z_1$:
+Apply a trainable circuit
+
+```math
+|\psi(x,\theta)\rangle
+=
+W(\theta)|\phi(x)\rangle.
+```
+
+Measure $Z$ on the first qubit:
 
 ```math
 f_\theta(x)
@@ -592,7 +351,13 @@ f_\theta(x)
 \langle Z_1\rangle_{x,\theta}.
 ```
 
-Predict
+Because the eigenvalues of $Z$ are $\pm1$,
+
+```math
+-1\le f_\theta(x)\le1.
+```
+
+A simple prediction rule is
 
 ```math
 \hat y
@@ -600,71 +365,73 @@ Predict
 \mathrm{sign}(f_\theta(x)).
 ```
 
-A complete complexity analysis must still ask:
+This model contains several distinct design choices:
 
-- How expensive is $U_\phi(x)$?
-- How many shots estimate $f_\theta(x)$?
-- How many quantum evaluations are required for training?
-- What classical models use the same data and preprocessing?
+- how $x$ is encoded,
+- which circuit $W(\theta)$ is used,
+- which observable is measured,
+- which loss is optimized,
+- and how the parameters are updated.
 
-The circuit formula alone does not answer whether the model is useful.
+Changing any of these can change the learning behavior.
 
-## 24. Research strategy
+## 14. Common misconceptions
 
-A stronger QML research strategy is often
+### “QML means running a classical neural network on qubits.”
 
-```text
-learning task
--> identify information bottleneck
--> identify possible quantum resource
--> define strongest restricted/classical competitor
--> search for a separation
--> design architecture around the separation.
-```
+No. QML includes many methods that do not resemble neural networks.
 
-This reverses the weaker workflow
+### “Any parameterized circuit is automatically a QNN.”
 
-```text
-choose PQC
--> choose benchmark dataset
--> hope for higher accuracy.
-```
+Not necessarily. QNN is an overloaded architectural term.
 
-## 25. Exercises
+### “A large Hilbert space automatically gives better learning.”
 
-### Conceptual
+No. Useful learning also depends on encoding, measurement, trainability, data geometry, and the task.
 
-1. Give three QML problems that do not require a trainable PQC.
-2. Why must the data-access model be included in a complexity claim?
-3. Distinguish representational advantage from sample-complexity advantage.
-4. Why can learning from native quantum data be conceptually different from encoding classical vectors?
+### “If a quantum model has higher accuracy once, quantum advantage is proven.”
 
-### Computational
+No. Performance depends on the comparison, resource budget, data, and experimental setup.
 
-5. Write the Born probabilities for a binary classifier using a two-outcome POVM $\{E_0,E_1\}$.
-6. Suppose training uses 1000 data points, 50 parameters, two parameter-shift settings per parameter, and 100 shots per setting. Estimate the raw circuit-shot count for one full-batch gradient step, ignoring observable grouping.
-7. For a model output $f_\theta(x)=\langle Z\rangle$, show that $f_\theta(x)\in[-1,1]$.
-8. Convert that expectation into a Bernoulli probability through $p=(1+f)/2$.
+### “Classical data and quantum data are the same after encoding.”
 
-### Research-oriented
+No. Encoding classical information into a quantum state and receiving an unknown quantum state as the input are different information-access settings.
 
-9. Choose a QML paper and fill in the rigorous specification template above.
-10. Design a task where the trainable object is the measurement rather than the circuit.
-11. Formulate a learning problem in which a quantum channel, rather than a state or scalar function, is the prediction target.
-12. What would it mean to identify the *minimal genuinely quantum primitive* required for a learning advantage?
+## 15. Exercises
 
-## 26. Key takeaways
+### A. Conceptual
 
-- QML is a field spanning quantum models, quantum data, learning theory, and hybrid algorithms.
-- Variational QML is one family, not the definition of QML.
-- Data access, encoding, hypothesis class, measurement, loss, and optimizer are separate components.
-- Quantum advantage can refer to runtime, queries, samples, communication, representation, or approximation quality.
-- A useful QML claim requires explicit access assumptions and strong classical baselines.
-- Native quantum-data tasks can provide fundamentally different opportunities from classical-data encoding.
-- Research should begin from the learning bottleneck and candidate quantum resource, not from a circuit architecture alone.
+1. Give two QML examples that do not require a trainable PQC.
+2. Explain the difference between classical data encoded into a quantum state and native quantum data.
+3. Why is measurement part of the model rather than merely an implementation detail?
+4. Distinguish expressivity, trainability, and generalization.
+5. Give two different meanings of quantum advantage.
+
+### B. Computational
+
+6. For a binary measurement $\{E_0,E_1\}$, write the two Born probabilities for input state $\rho$.
+7. Show that an expectation value of a Pauli observable lies in $[-1,1]$.
+8. Convert an expectation value $f\in[-1,1]$ into a Bernoulli probability using $p=(1+f)/2$.
+9. Suppose one model evaluation uses 200 shots and a training loop evaluates the circuit 5000 times. How many circuit shots are used in total?
+
+### C. Challenge
+
+10. Design a simple QML pipeline and label each component: data, encoding, quantum model, measurement, loss, and optimizer.
+11. Compare a quantum kernel model with a variational classifier. Which parts are trained in each case?
+12. Give an example of a learning problem where the target is a quantum object rather than a classical label.
+
+## 16. Key takeaways
+
+- QML is a broad field, not a single circuit architecture.
+- Classical-data QML and quantum-data learning are different settings.
+- Encoding, quantum processing, measurement, loss, and optimization are separate components.
+- PQC, VQC, VQA, QNN, and QML should not be used as synonyms.
+- Expressivity, trainability, and generalization answer different questions.
+- Quantum advantage has several possible meanings and should be interpreted carefully.
 
 ## References
 
 1. J. Biamonte et al., "Quantum machine learning," *Nature* 549, 195–202 (2017). https://doi.org/10.1038/nature23474
 2. M. Schuld and F. Petruccione, *Supervised Learning with Quantum Computers*, Springer, 2018. https://doi.org/10.1007/978-3-319-96424-9
 3. M. Cerezo et al., "Challenges and opportunities in quantum machine learning," *Nature Computational Science* 2, 567–576 (2022). https://doi.org/10.1038/s43588-022-00311-3
+4. V. Havlíček et al., "Supervised learning with quantum-enhanced feature spaces," *Nature* 567, 209–212 (2019). https://doi.org/10.1038/s41586-019-0980-2
