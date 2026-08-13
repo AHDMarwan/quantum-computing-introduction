@@ -1,12 +1,18 @@
 # Quantum Computing: From Quantum Information to Quantum Machine Learning
 
-A structured, research-oriented introduction to **quantum information science (QIS)**, **quantum computing**, and **quantum machine learning (QML)**.
+A structured educational introduction to **quantum information science (QIS)**, **quantum computing**, and **quantum machine learning (QML)**.
 
-The repository is designed as a living Markdown textbook and research knowledge base. It separates mathematical objects, computational models, hardware platforms, algorithms, optimization paradigms, and learning tasks instead of treating them as interchangeable terminology.
+The goal of this repository is to make the field easier to learn without flattening the mathematics. It separates mathematical foundations, computational models, hardware platforms, algorithms, variational methods, quantum information theory, and QML so that the relationships between them remain clear.
 
-> **Format:** all scientific content is stored in Markdown (`.md`) files.
+> **Format:** all scientific content is stored in Markdown (`.md`) files and rendered directly on GitHub.
 
-## How to read this repository
+## Who is this for?
+
+This repository is intended for students, software engineers, physicists, mathematicians, and curious readers who want a coherent path into quantum computing.
+
+You do **not** need prior knowledge of quantum computing. Basic familiarity with linear algebra, complex numbers, probability, and introductory calculus is helpful. When a more advanced concept is needed, the relevant chapter introduces the notation before using it.
+
+## How to use this repository
 
 The recommended path is
 
@@ -23,9 +29,25 @@ foundations
 
 The sections can also be used independently as a reference.
 
+Most chapters are organized around the same learning pattern:
+
+```text
+motivation
+→ learning objectives
+→ intuition
+→ mathematical formulation
+→ derivations
+→ worked examples
+→ common misconceptions
+→ exercises
+→ key takeaways
+```
+
+Some advanced chapters also discuss limitations, resource requirements, and comparisons between methods. These sections are included to help readers interpret the subject correctly, not as a prerequisite for beginning the course.
+
 ## 1. Foundations
 
-Start here if you want the mathematical language from first principles.
+Start here for the mathematical language of quantum information.
 
 - [Section index](01-foundations/README.md)
 - [Quantum Information Science: The Big Picture](01-foundations/01-quantum-information-science.md)
@@ -39,6 +61,8 @@ Start here if you want the mathematical language from first principles.
 
 ## 2. Computational Models of Quantum Computing
 
+Learn the main ways in which quantum computation can be organized mathematically.
+
 - [Section index](02-quantum-computing/README.md)
 - [Gate-Based / Circuit Model](02-quantum-computing/01-gate-model.md)
 - [Adiabatic Quantum Computing](02-quantum-computing/02-adiabatic-computing.md)
@@ -48,6 +72,8 @@ Start here if you want the mathematical language from first principles.
 - [Continuous-Variable Quantum Computing](02-quantum-computing/06-continuous-variable-qc.md)
 
 ## 3. Hardware Platforms
+
+See how abstract quantum information is implemented physically.
 
 - [Section index](03-hardware/README.md)
 - [Superconducting Qubits](03-hardware/01-superconducting-qubits.md)
@@ -59,6 +85,8 @@ Start here if you want the mathematical language from first principles.
 
 ## 4. Quantum Algorithms
 
+Study canonical examples of how interference, phase, Fourier structure, and coherent access are used computationally.
+
 - [Section index](04-quantum-algorithms/README.md)
 - [Deutsch–Jozsa](04-quantum-algorithms/01-deutsch-jozsa.md)
 - [Grover Search and Amplitude Amplification](04-quantum-algorithms/02-grover.md)
@@ -68,6 +96,8 @@ Start here if you want the mathematical language from first principles.
 - [Amplitude Estimation](04-quantum-algorithms/06-amplitude-estimation.md)
 
 ## 5. Variational Quantum Algorithms
+
+Learn how parameterized circuits and classical optimization are combined.
 
 - [Section index](05-variational-quantum-algorithms/README.md)
 - [PQC and Ansatz](05-variational-quantum-algorithms/01-pqc-and-ansatz.md)
@@ -79,6 +109,8 @@ Start here if you want the mathematical language from first principles.
 
 ## 6. Quantum Information Theory
 
+Develop the language of states, channels, entropy, communication, resources, and error correction.
+
 - [Section index](06-quantum-information-theory/README.md)
 - [Quantum Channels](06-quantum-information-theory/01-quantum-channels.md)
 - [Entropy and Information](06-quantum-information-theory/02-entropy-and-information.md)
@@ -88,6 +120,8 @@ Start here if you want the mathematical language from first principles.
 - [Quantum Error Correction](06-quantum-information-theory/06-error-correction.md)
 
 ## 7. Quantum Machine Learning
+
+Learn the main QML paradigms and the distinctions among data encoding, trainable circuits, kernels, structured models, learning from quantum data, trainability, generalization, and quantum advantage.
 
 - [Section index](07-quantum-machine-learning/README.md)
 - [What Is QML?](07-quantum-machine-learning/01-what-is-qml.md)
@@ -106,13 +140,15 @@ Start here if you want the mathematical language from first principles.
 
 ## 8. Reference
 
+Use these files when a symbol or acronym becomes unclear.
+
 - [Reference index](08-reference/README.md)
 - [Notation](08-reference/notation.md)
 - [Terminology Map](08-reference/terminology-map.md)
 - [Glossary](08-reference/glossary.md)
 - [Bibliography](08-reference/bibliography.md)
 
-## Terminology principle
+## A terminology rule used throughout the book
 
 The repository keeps the following levels separate:
 
@@ -136,17 +172,25 @@ In particular:
 - an **ansatz** is a candidate family;
 - a **VQA** is a hybrid optimization framework;
 - **VQE** and **QAOA** are specific VQAs;
-- **QML** is a broad research field;
-- a **QNN** is architecture-dependent terminology, not a unique universal object.
+- **QML** is a broad field;
+- a **QNN** is architecture-dependent terminology, not one uniquely defined mathematical object.
 
-See [Terminology Map](08-reference/terminology-map.md).
+See the [Terminology Map](08-reference/terminology-map.md) for a compact summary.
 
-## Scientific standard
+## Educational principles
 
-The text aims to distinguish established results from heuristics and open research questions. Claims of quantum advantage are evaluated relative to an explicit task, data-access model, classical baseline, and resource measure.
+The text follows a few simple rules:
 
-Primary papers, major reviews, textbooks, and formal standards are prioritized in the references. The general quantum-computing vocabulary is aligned where possible with [ISO/IEC 4879:2024](https://www.iso.org/standard/80432.html).
+1. Introduce intuition before using heavy notation where possible.
+2. State assumptions explicitly.
+3. Distinguish mathematical models from physical hardware.
+4. Explain what an equation means, not only how to manipulate it.
+5. Include worked examples and exercises where they add value.
+6. Distinguish established results from common heuristics or oversimplifications.
+7. Treat quantum advantage carefully, while keeping the presentation accessible to learners.
 
-## Repository status
+Primary papers, major reviews, textbooks, and formal standards are prioritized in the references. General quantum-computing vocabulary is aligned where possible with [ISO/IEC 4879:2024](https://www.iso.org/standard/80432.html).
 
-The first complete conceptual pass is organized across eight sections. Future revisions can deepen individual chapters, add derivations and exercises, and introduce research notes without changing the core taxonomy.
+## Status
+
+The repository now contains a complete first educational pass from quantum-information foundations to quantum machine learning. Future revisions should primarily improve pedagogy: clearer examples, additional exercises and solutions, diagrams, cross-links, and explanations of common points of confusion.
