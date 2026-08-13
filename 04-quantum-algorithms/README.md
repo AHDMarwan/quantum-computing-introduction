@@ -1,21 +1,21 @@
 # Quantum Algorithms
 
-This section develops canonical quantum algorithms as **resource-aware computational procedures**, not as collections of circuit diagrams.
+This section develops several canonical quantum algorithms with an emphasis on **how they work**, **why the mathematics works**, and **what kind of improvement they provide**.
 
-The central objective is to understand exactly where a quantum improvement comes from and what assumptions are required for the complexity claim to be meaningful.
+The goal is not to memorize circuit diagrams. It is to understand the recurring ideas behind quantum algorithms: phase kickback, interference, amplitude amplification, Fourier structure, Hamiltonian evolution, and coherent estimation.
 
 ## Recommended learning path
 
 ```text
 promise problems and oracle interference
--> amplitude amplification
--> spectral phase extraction
--> number-theoretic period finding
--> Hamiltonian simulation
--> numerical amplitude estimation
+→ amplitude amplification
+→ spectral phase extraction
+→ number-theoretic period finding
+→ Hamiltonian simulation
+→ numerical amplitude estimation
 ```
 
-This sequence is deliberate. Later chapters reuse primitives introduced earlier.
+Later chapters reuse ideas introduced earlier.
 
 ## Contents
 
@@ -26,184 +26,132 @@ This sequence is deliberate. Later chapters reuse primitives introduced earlier.
 5. [Quantum Simulation](05-quantum-simulation.md)
 6. [Quantum Amplitude Estimation](06-amplitude-estimation.md)
 
-## Phase 3 chapter standard
+## How the chapters are organized
 
-Every algorithm chapter is organized around the following questions:
+Each algorithm is studied through a common sequence:
 
 ```text
-problem definition
--> input / oracle / access model
--> classical baseline
--> quantum primitive
--> derivation
--> correctness
--> asymptotic complexity
--> physical resource accounting
--> source of quantum improvement
--> limitations and hidden assumptions
--> exercises
+problem
+→ input model
+→ main quantum idea
+→ state evolution
+→ derivation
+→ correctness
+→ complexity
+→ worked example
+→ limitations / assumptions
+→ exercises
 ```
 
-The purpose of this structure is to prevent a common mistake in quantum computing: quoting an asymptotic quantum complexity without specifying the computational model in which it was obtained.
+This makes it easier to compare algorithms without reducing them to headline complexity statements.
 
-## The resource-accounting principle
+## A note on complexity
 
-A quantum algorithm can have several different notions of cost:
+Quantum algorithms can be analyzed using different resource measures:
 
 - **query complexity** — number of oracle calls,
 - **gate complexity** — number of elementary quantum gates,
-- **circuit depth** — longest dependency chain of gates,
-- **qubit complexity** — logical or physical qubits required,
-- **coherent evolution time** — how long quantum information must remain coherent,
-- **measurement complexity** — number of shots or observables,
-- **state-preparation complexity** — cost of preparing input states,
-- **data-access complexity** — cost of loading or accessing classical information coherently,
-- **fault-tolerant overhead** — resources needed to realize reliable logical operations.
+- **circuit depth** — longest dependent sequence of gates,
+- **qubit complexity** — number of qubits required,
+- **coherent evolution time** — duration of controlled quantum evolution,
+- **measurement complexity** — number of measurements or samples,
+- **state-preparation complexity** — cost of preparing the required input state.
 
-Therefore
+Therefore a statement such as “this algorithm is faster” is meaningful only after the resource being compared is identified.
+
+For example,
 
 ```math
-\text{quantum query advantage}
+\text{better query complexity}
 \not\Rightarrow
-\text{end-to-end runtime advantage}.
+\text{automatically better end-to-end runtime}.
 ```
 
-A full comparison must identify the resource being improved.
-
-## A recurring audit checklist
-
-For every quantum algorithm, ask:
-
-1. **What is the precise computational problem?**
-2. **What promise, if any, is assumed?**
-3. **How is the input represented?**
-4. **How is the input accessed coherently?**
-5. **What is the strongest relevant classical baseline?**
-6. **What quantum primitive creates the improvement?**
-7. **What complexity measure is being quoted?**
-8. **What costs are hidden inside an oracle or state-preparation primitive?**
-9. **What output is actually required?**
-10. **How many measurements are needed?**
-11. **How does precision affect the cost?**
-12. **What changes in a fault-tolerant implementation?**
+This distinction is introduced here because it is part of understanding the algorithms correctly.
 
 ## Learning goals
 
 After completing this section, you should be able to:
 
-- distinguish deterministic, randomized, and quantum query complexity,
-- derive phase kickback in oracle algorithms,
-- explain Deutsch–Jozsa as a global interference computation,
-- derive Grover search as a two-dimensional rotation,
-- explain why Grover's quadratic query speedup is optimal for black-box unstructured search,
-- generalize Grover search to amplitude amplification,
-- derive the Fourier phase state used by quantum phase estimation,
-- connect QPE precision to controlled evolution time,
+- explain coherent oracle access and phase kickback,
+- derive the interference mechanism in Deutsch–Jozsa,
+- derive Grover search as a rotation in a two-dimensional subspace,
+- explain amplitude amplification as the generalization of Grover search,
+- describe the role of controlled powers and the inverse QFT in quantum phase estimation,
+- connect QPE to energy estimation,
 - explain how Shor reduces factoring to order finding,
-- distinguish Shor's complexity-theoretic result from practical fault-tolerant resource requirements,
-- derive first-order Hamiltonian product formulas,
-- explain how noncommutativity controls Trotter error,
+- distinguish the number-theoretic and quantum parts of Shor's algorithm,
+- derive a first-order Trotter product formula for Hamiltonian simulation,
+- explain the role of noncommuting Hamiltonian terms,
 - distinguish digital and analog quantum simulation,
-- analyze the output and measurement problem in quantum simulation,
-- derive the relation between amplitude estimation and Grover eigenphases,
-- compare $O(1/\epsilon^2)$ Monte Carlo sampling with ideal $O(1/\epsilon)$ coherent amplitude estimation,
-- and audit quantum-advantage claims using end-to-end resource accounting.
+- derive the basic idea of amplitude estimation,
+- and compare the principal complexity scalings of the algorithms in this section.
 
 ## Algorithm comparison map
 
-| Algorithm | Core task | Main primitive | Typical headline advantage |
+| Algorithm | Main task | Core idea | Main takeaway |
 |---|---|---|---|
-| Deutsch–Jozsa | Promise-property testing | Phase kickback + interference | Exact deterministic query separation |
+| Deutsch–Jozsa | Promise-property testing | Phase kickback + interference | A simple example of global interference |
 | Grover | Unstructured search | Amplitude amplification | Quadratic query improvement |
-| QPE | Eigenphase estimation | Controlled powers + inverse QFT | Spectral information extraction |
-| Shor | Factoring / discrete log | Order finding + QPE/QFT | Polynomial-time quantum algorithm |
-| Quantum simulation | Approximate quantum dynamics | Product formulas / block encodings / signal processing | Efficient structured quantum evolution |
-| Amplitude estimation | Probability / expectation estimation | Grover eigenphase estimation | Quadratic precision-query improvement |
+| QPE | Eigenphase estimation | Controlled powers + inverse QFT | Extract phase/eigenvalue information |
+| Shor | Factoring / discrete logarithms | Order finding + Fourier methods | Polynomial-time quantum algorithm for important number-theoretic problems |
+| Quantum simulation | Quantum dynamics | Hamiltonian evolution approximations | Quantum systems can simulate structured quantum dynamics |
+| Amplitude estimation | Probability / expectation estimation | Grover rotations + phase estimation | Quadratic improvement in ideal precision-query scaling |
 
-The table gives only the headline. Each chapter explains the access model and caveats required to interpret that statement correctly.
+## Three recurring ideas
 
-## Three recurring mechanisms
-
-Although the algorithms look different, several patterns repeat.
-
-### 1. Phase encoding
-
-Information is converted into relative phase:
+### 1. Encode information in phase
 
 ```text
 function value / eigenvalue
--> phase
+→ relative phase
 ```
 
-This appears in Deutsch–Jozsa, QPE, Shor, and amplitude estimation.
+This appears in several algorithms in different forms.
 
-### 2. Interference or spectral decoding
-
-A unitary transformation makes the encoded phase observable:
+### 2. Use interference to reveal structure
 
 ```text
 phase structure
--> interference / Fourier transform
--> measurable classical information
+→ interference or Fourier transform
+→ measurement
 ```
 
-### 3. Structured access
+The algorithm is designed so that useful information becomes likely to appear in the final measurement.
 
-The algorithm assumes the relevant operation can be applied coherently:
+### 3. Use coherent operations
+
+Algorithms may assume access to operations such as
 
 ```text
-oracle
-controlled unitary
+oracle calls
+controlled unitaries
 Hamiltonian evolution
-state-preparation circuit
+state-preparation circuits
 ```
 
-These are computational resources, not free abstractions.
+Understanding what these operations mean is part of understanding the algorithm.
 
 ## Suggested study method
 
 For each chapter:
 
-1. Write down the problem before reading the circuit.
-2. Identify the classical baseline.
-3. Write the quantum state after every conceptually important operation.
-4. Derive the final measurement probability rather than memorizing it.
-5. State the asymptotic complexity and name the resource it counts.
-6. List any oracle, QRAM, state-preparation, precision, or fault-tolerance assumptions.
-7. Complete at least one computational exercise.
-8. Answer the research-oriented exercises as if reviewing a paper's quantum-advantage claim.
+1. Write down the problem in your own words.
+2. Identify the input state and the main quantum operation.
+3. Follow the quantum state after each important step.
+4. Derive the final measurement probability.
+5. State the complexity and identify what resource it counts.
+6. Work through at least one explicit example.
+7. Complete the conceptual and computational exercises before moving on.
 
-## Why this matters for QML
+## Connection to later sections
 
-Quantum machine learning inherits the same methodological problems as quantum algorithms, often in a harder form.
+The algorithms in this section introduce ideas that reappear later:
 
-A QML pipeline may contain
-
-```text
-classical data
--> quantum encoding
--> trainable quantum circuit
--> measurements
--> classical optimization.
-```
-
-If only the circuit evaluation is counted while encoding, sampling, training, or classical baselines are ignored, a claimed advantage can be misleading.
-
-The habits developed in this section therefore become the foundation for later analysis of QML:
-
-```math
-\boxed{
-\text{task}
-+
-\text{access model}
-+
-\text{resource metric}
-+
-\text{classical baseline}
-}
-```
-
-must be specified before the phrase **quantum advantage** becomes operationally meaningful.
+- QPE connects to fault-tolerant quantum simulation and chemistry.
+- Hamiltonian simulation connects abstract algorithms to physical models.
+- Grover and amplitude estimation introduce reusable primitives.
+- Resource accounting becomes useful when studying VQAs and QML.
 
 ## Core references
 
