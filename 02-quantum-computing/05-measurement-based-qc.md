@@ -16,7 +16,7 @@ Given a graph $G=(V,E)$, a graph state can be prepared by placing each vertex in
 \prod_{(i,j)\in E}CZ_{ij}|+\rangle^{\otimes |V|}.
 ```
 
-The state is prepared before most of the logical computation is known operationally.
+In the one-way model, a sufficiently large universal cluster state can be prepared independently of the specific logical gate sequence. The algorithm is then encoded primarily in the measurement bases, their ordering, and their adaptive dependence on earlier outcomes.
 
 ## 3. Computation by measurement
 
