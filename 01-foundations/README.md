@@ -2,7 +2,7 @@
 
 This section develops the mathematical language used throughout the repository. The order is deliberate: we first distinguish classical probabilities from quantum amplitudes, then introduce Hilbert spaces and single-qubit geometry, then composite systems, entanglement, mixed states, and finally measurement.
 
-The goal is not only to recognize definitions. By the end of the section, you should be able to **derive, calculate, compare, and diagnose misconceptions** using the formalism.
+The goal is not only to recognize definitions. By the end of the section, you should be able to **derive, calculate, compare, and explain** the main objects of elementary quantum information.
 
 ## Recommended learning path
 
@@ -17,7 +17,7 @@ classical probability
 → measurement and POVMs
 ```
 
-Each step introduces objects needed by the next one.
+Each step introduces ideas needed by the next one.
 
 ## Contents
 
@@ -30,9 +30,9 @@ Each step introduces objects needed by the next one.
 7. [Density Matrices and Mixed States](07-density-matrices.md)
 8. [Measurements and POVMs](08-measurements-and-povms.md)
 
-## Phase 2 chapter standard
+## How the chapters are written
 
-The core foundations chapters are written as lecture-note chapters rather than short encyclopedia entries. They include, where appropriate:
+The core foundations chapters are designed as lecture notes rather than short encyclopedia entries. Where appropriate they include:
 
 ```text
 motivation
@@ -44,11 +44,11 @@ motivation
 → connections to later topics
 → conceptual exercises
 → computational exercises
-→ research-oriented exercises
+→ challenge exercises
 → key takeaways
 ```
 
-The **research-oriented exercises** are intentional. Their purpose is to train the habit of asking what assumptions, resources, access models, and observables actually support a quantum-information claim.
+The challenge exercises are optional. They are meant to connect several ideas at once and test understanding beyond direct substitution into formulas.
 
 ## Learning goals
 
@@ -71,18 +71,18 @@ After completing this section, you should be able to:
 - compute purity, expectation values, and basic distinguishability measures,
 - distinguish projective measurements, POVMs, and quantum instruments,
 - analyze finite-shot expectation-value estimation,
-- and formulate state discrimination as an optimization over measurements.
+- and formulate basic state-discrimination problems.
 
 ## Suggested study method
 
 For each chapter:
 
-1. Read the conceptual sections without trying to memorize formulas.
+1. Read the conceptual sections first without trying to memorize formulas.
 2. Reproduce the main derivations by hand.
 3. Work through the examples without looking at the intermediate steps.
 4. Answer the conceptual exercises in prose.
 5. Solve the computational exercises explicitly.
-6. Use the research-oriented questions to connect the foundations to algorithms and QML.
+6. Try the challenge exercises only after the main ideas feel comfortable.
 
 A useful checkpoint is that you should be able to move freely between
 
@@ -102,7 +102,7 @@ Once these foundations are comfortable, continue to:
 - [Computational Models of Quantum Computing](../02-quantum-computing/README.md),
 - then [Quantum Algorithms](../04-quantum-algorithms/README.md),
 - then [Variational Quantum Algorithms](../05-variational-quantum-algorithms/README.md),
-- and finally [Quantum Machine Learning](../07-quantum-machine-learning/README.md).
+- and later [Quantum Machine Learning](../07-quantum-machine-learning/README.md).
 
 The later chapters assume the notation and distinctions established here.
 
