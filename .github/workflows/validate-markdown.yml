@@ -1,0 +1,79 @@
+name: Validate Markdown textbook
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate math and relative Markdown links
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          root = Path('.').resolve()
+          errors = []
+
+          for path in Path('.').rglob('*.md'):
+              text = path.read_text(encoding='utf-8')
+              lines = text.splitlines()
+
+              # GitHub-math conventions used by this repository.
+              if r'\operatorname{' in text:
+                  errors.append(f'{path}: contains unsupported \\operatorname macro')
+              if r'\[' in text or r'\]' in text:
+                  errors.append(f'{path}: contains legacy display-math delimiters')
+              if r'\(' in text or r'\)' in text:
+                  errors.append(f'{path}: contains legacy inline-math delimiters')
+              for i, line in enumerate(lines, 1):
+                  if line.strip() == '$$':
+                      errors.append(f'{path}:{i}: standalone $$ display delimiter; use ```math')
+
+              # Ensure math fences are balanced. Other ordinary code fences are ignored.
+              math_fences = sum(1 for line in lines if line.strip() == '```math')
+              # A math opening is closed by a plain ``` line. Parse fenced blocks.
+              in_math = False
+              for i, line in enumerate(lines, 1):
+                  s = line.strip()
+                  if not in_math and s == '```math':
+                      in_math = True
+                  elif in_math and s == '```':
+                      in_math = False
+              if in_math:
+                  errors.append(f'{path}: unclosed ```math block')
+
+              # Validate relative Markdown links to repo files/directories.
+              for m in re.finditer(r'\[[^\]]*\]\(([^)]+)\)', text):
+                  target = m.group(1).strip()
+                  if not target or target.startswith(('http://','https://','mailto:','#')):
+                      continue
+                  target = target.split('#', 1)[0].split('?', 1)[0]
+                  if not target:
+                      continue
+                  candidate = (path.parent / target).resolve()
+                  try:
+                      candidate.relative_to(root)
+                  except ValueError:
+                      errors.append(f'{path}: relative link escapes repository: {target}')
+                      continue
+                  if not candidate.exists():
+                      errors.append(f'{path}: broken relative link: {target}')
+
+          if errors:
+              print('VALIDATION FAILED')
+              for e in errors:
+                  print('-', e)
+              sys.exit(1)
+
+          print('Validation passed: Markdown math conventions and relative links are consistent.')
+          PY
