@@ -10,9 +10,9 @@ The dominant modern qubit design is the transmon.
 
 A simplified transmon Hamiltonian is
 
-$$
+```math
 H=4E_C(\hat n-n_g)^2-E_J\cos\hat\phi,
-$$
+```
 
 where $E_C$ is the charging energy and $E_J$ is the Josephson energy. In the regime $E_J/E_C\gg1$, sensitivity to charge noise is reduced while sufficient anharmonicity remains for qubit control.
 

@@ -4,13 +4,13 @@
 
 Suppose a unitary $A$ prepares
 
-$$
+```math
 A|0\rangle
 =
 \sqrt{1-a}\,|\psi_0\rangle|0\rangle
 +
 \sqrt a\,|\psi_1\rangle|1\rangle,
-$$
+```
 
 where $a\in[0,1]$ is an unknown probability of interest. Amplitude estimation seeks to estimate $a$.
 
@@ -18,15 +18,15 @@ where $a\in[0,1]$ is an unknown probability of interest. Amplitude estimation se
 
 Classical Monte Carlo estimation of a probability to additive error $\epsilon$ requires
 
-$$
+```math
 O(1/\epsilon^2)
-$$
+```
 
 independent samples in the standard setting. Ideal quantum amplitude estimation can achieve
 
-$$
+```math
 O(1/\epsilon)
-$$
+```
 
 uses of coherent state-preparation/reflection primitives, giving a quadratic query-complexity improvement.
 
@@ -34,9 +34,9 @@ uses of coherent state-preparation/reflection primitives, giving a quadratic que
 
 As in amplitude amplification, define an angle $\theta$ such that
 
-$$
+```math
 a=\sin^2\theta.
-$$
+```
 
 A Grover-like operator acts as a rotation whose eigenphases encode $\theta$. Original amplitude estimation applies phase estimation to this operator and then converts the estimated phase into $a$.
 

@@ -6,15 +6,15 @@ Analog quantum simulation uses a controllable quantum system whose natural or en
 
 For a time-independent Hamiltonian,
 
-$$
+```math
 |\psi(t)\rangle=e^{-iHt}|\psi(0)\rangle.
-$$
+```
 
 For time-dependent control,
 
-$$
+```math
 U(t)=\mathcal T\exp\left[-i\int_0^t H(\tau)d\tau\right].
-$$
+```
 
 ## 2. Analog versus digital simulation
 

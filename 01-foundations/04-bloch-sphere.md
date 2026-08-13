@@ -4,20 +4,20 @@
 
 A normalized pure qubit state has two complex amplitudes, but normalization removes one real degree of freedom and global phase removes another. Two real parameters remain. Therefore every pure qubit state can be written as
 
-$$
+```math
 |\psi\rangle
 =
 \cos\frac\theta2|0\rangle
 +e^{i\phi}\sin\frac\theta2|1\rangle,
-$$
+```
 
 with
 
-$$
+```math
 0\le\theta\le\pi,
 \qquad
 0\le\phi<2\pi.
-$$
+```
 
 These angles identify a point on the unit sphere.
 
@@ -25,39 +25,39 @@ These angles identify a point on the unit sphere.
 
 The corresponding unit vector is
 
-$$
+```math
 \mathbf r
 =
 (\sin\theta\cos\phi,\,
  \sin\theta\sin\phi,\,
  \cos\theta).
-$$
+```
 
 For a general single-qubit density operator,
 
-$$
+```math
 \rho
 =
 \frac12\left(I+\mathbf r\cdot\boldsymbol\sigma\right),
-$$
+```
 
 where
 
-$$
+```math
 \boldsymbol\sigma=(X,Y,Z).
-$$
+```
 
 Pure states satisfy
 
-$$
+```math
 \|\mathbf r\|=1,
-$$
+```
 
 while mixed states satisfy
 
-$$
+```math
 \|\mathbf r\|<1.
-$$
+```
 
 Thus pure states lie on the surface and mixed states lie inside the Bloch ball.
 
@@ -65,63 +65,63 @@ Thus pure states lie on the surface and mixed states lie inside the Bloch ball.
 
 The poles are
 
-$$
+```math
 |0\rangle\leftrightarrow(0,0,1),
 \qquad
 |1\rangle\leftrightarrow(0,0,-1).
-$$
+```
 
 The $X$-eigenstates are
 
-$$
+```math
 |+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt2}
 \leftrightarrow(1,0,0),
-$$
+```
 
-$$
+```math
 |-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt2}
 \leftrightarrow(-1,0,0).
-$$
+```
 
 The $Y$-eigenstates are
 
-$$
+```math
 |+i\rangle=\frac{|0\rangle+i|1\rangle}{\sqrt2},
 \qquad
 |-i\rangle=\frac{|0\rangle-i|1\rangle}{\sqrt2}.
-$$
+```
 
 ## 4. Measurements as directions
 
 For a state with Bloch vector $\mathbf r$, the expectation values of the Pauli observables are
 
-$$
+```math
 \langle X\rangle=r_x,
 \qquad
 \langle Y\rangle=r_y,
 \qquad
 \langle Z\rangle=r_z.
-$$
+```
 
 A projective measurement along a unit direction $\mathbf n$ corresponds to the observable
 
-$$
+```math
 \mathbf n\cdot\boldsymbol\sigma.
-$$
+```
 
 The probabilities of outcomes $\pm1$ are
 
-$$
+```math
 p_\pm=\frac12(1\pm\mathbf r\cdot\mathbf n).
-$$
+```
 
 ## 5. Gates as rotations
 
 A one-qubit unitary, up to a global phase, induces a rotation of the Bloch sphere. For example,
 
-$$
+```math
 R_x(\theta)=e^{-i\theta X/2}
-$$
+```
 
 rotates the Bloch vector by angle $\theta$ around the $x$-axis, and similarly for $R_y$ and $R_z$.
 
@@ -133,17 +133,17 @@ The Bloch sphere is a complete geometric representation only for a single qubit.
 
 For example, for
 
-$$
+```math
 |\Phi^+\rangle
 =
 \frac{|00\rangle+|11\rangle}{\sqrt2},
-$$
+```
 
 each individual qubit has reduced state
 
-$$
+```math
 \rho_A=\rho_B=\frac I2,
-$$
+```
 
 which lies at the center of the Bloch ball, even though the two-qubit state is pure.
 

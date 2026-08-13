@@ -4,17 +4,17 @@
 
 A pure bipartite state $|\psi\rangle_{AB}$ is **separable** if there exist states $|a\rangle_A$ and $|b\rangle_B$ such that
 
-$$
+```math
 |\psi\rangle_{AB}=|a\rangle_A\otimes|b\rangle_B.
-$$
+```
 
 If no such factorization exists, the state is entangled.
 
 The canonical example is the Bell state
 
-$$
+```math
 |\Phi^+\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2}.
-$$
+```
 
 It is a pure state of the pair, but neither qubit has a pure local state.
 
@@ -22,17 +22,17 @@ It is a pure state of the pair, but neither qubit has a pure local state.
 
 For
 
-$$
+```math
 \rho_{AB}=|\Phi^+\rangle\langle\Phi^+|,
-$$
+```
 
 the reduced states are
 
-$$
-\rho_A=\operatorname{Tr}_B\rho_{AB}=\frac I2,
+```math
+\rho_A=\mathrm{Tr}_B\rho_{AB}=\frac I2,
 \qquad
 \rho_B=\frac I2.
-$$
+```
 
 Thus complete knowledge of the joint state does not imply a pure state for each part. The information can reside in correlations.
 
@@ -40,43 +40,43 @@ Thus complete knowledge of the joint state does not imply a pure state for each 
 
 Every bipartite pure state can be written
 
-$$
+```math
 |\psi\rangle
 =
 \sum_{k=1}^r \sqrt{\lambda_k}
 |u_k\rangle_A|v_k\rangle_B,
-$$
+```
 
 where $\lambda_k\ge0$, $\sum_k\lambda_k=1$, and $\{|u_k\rangle\}$, $\{|v_k\rangle\}$ are orthonormal sets.
 
 The state is separable iff the Schmidt rank is one. For a bipartite pure state, the reduced density operators have eigenvalues $\lambda_k$, so the entanglement entropy is
 
-$$
+```math
 S(\rho_A)=S(\rho_B)
 =-\sum_k\lambda_k\log\lambda_k.
-$$
+```
 
 ## 4. Correlation is not automatically entanglement
 
 The mixed state
 
-$$
+```math
 \rho
 =
 \frac12|00\rangle\langle00|
 +
 \frac12|11\rangle\langle11|
-$$
+```
 
 has strong classical correlations but is separable because it is a convex mixture of product states. Therefore correlation and entanglement are different concepts.
 
 For mixed states, separability means
 
-$$
+```math
 \rho_{AB}
 =
 \sum_j p_j\rho_A^{(j)}\otimes\rho_B^{(j)}.
-$$
+```
 
 Determining separability is generally much harder than checking pure-state factorization.
 
@@ -84,11 +84,11 @@ Determining separability is generally much harder than checking pure-state facto
 
 Entanglement can produce correlations incompatible with local hidden-variable models. Bell inequalities make this statement operational. However,
 
-$$
+```math
 \text{Bell nonlocality}
 \neq
 \text{entanglement}
-$$
+```
 
 as mathematical sets for general mixed states: every Bell-nonlocal state is entangled, but not every entangled mixed state violates a given Bell inequality.
 

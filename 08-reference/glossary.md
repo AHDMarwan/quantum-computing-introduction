@@ -9,7 +9,7 @@ A compact glossary of terms used throughout the repository.
 | **Barren plateau** | Trainability regime in which gradients concentrate near zero, often with unfavorable scaling in system size. |
 | **Bell state** | One of four maximally entangled two-qubit states. |
 | **Bloch sphere** | Geometric representation of one-qubit states; pure states lie on the surface and mixed states inside the Bloch ball. |
-| **Born rule** | Rule assigning measurement probabilities, e.g. $p(y)=\operatorname{Tr}(E_y\rho)$. |
+| **Born rule** | Rule assigning measurement probabilities, e.g. $p(y)=\mathrm{Tr}(E_y\rho)$. |
 | **Circuit depth** | Number of sequential gate layers along the longest dependent path in a circuit. |
 | **Coherence** | Basis-dependent quantum property associated with off-diagonal density-matrix terms and usable phase relations. |
 | **Completely positive (CP)** | A map remains positive even when tensored with an identity map on an arbitrary reference system. |
@@ -62,6 +62,6 @@ A compact glossary of terms used throughout the repository.
 | **VQA** | Variational Quantum Algorithm: quantum cost estimation combined with classical parameter optimization. |
 | **VQC** | Ambiguous acronym; in this repository preferably Variational Quantum Classifier when classification is intended. |
 | **VQE** | Variational Quantum Eigensolver. |
-| **Von Neumann entropy** | $S(\rho)=-\operatorname{Tr}(\rho\log\rho)$. |
+| **Von Neumann entropy** | $S(\rho)=-\mathrm{Tr}(\rho\log\rho)$. |
 
 See [Terminology Map](terminology-map.md) for relationships among PQC, VQA, VQE, QAOA, VQC, QNN, and QML.

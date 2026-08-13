@@ -8,21 +8,21 @@ Quantum information is not obtained by replacing a classical probability distrib
 
 A classical bit takes a definite value in
 
-$$
+```math
 \{0,1\}.
-$$
+```
 
 If the value is uncertain, we use a probability distribution
 
-$$
+```math
 p=(p_0,p_1),\qquad p_0+p_1=1.
-$$
+```
 
 For example, a fair random bit has
 
-$$
+```math
 p_0=p_1=\frac12.
-$$
+```
 
 Classical randomness describes uncertainty about which alternative is realized. If a reversible classical transformation is applied, it permutes basis states. More general stochastic processes map probability distributions to probability distributions.
 
@@ -30,38 +30,38 @@ Classical randomness describes uncertainty about which alternative is realized. 
 
 A pure qubit state is
 
-$$
+```math
 |\psi\rangle=\alpha|0\rangle+\beta|1\rangle,
 \qquad |\alpha|^2+|\beta|^2=1.
-$$
+```
 
 The coefficients $\alpha,\beta\in\mathbb C$ are amplitudes. A computational-basis measurement gives
 
-$$
+```math
 P(0)=|\alpha|^2,\qquad P(1)=|\beta|^2.
-$$
+```
 
 The phase is not visible in this measurement alone. Compare
 
-$$
+```math
 |+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt2},
 \qquad
 |-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt2}.
-$$
+```
 
 Both produce $0$ and $1$ with probability $1/2$ in the computational basis, but they are orthogonal states:
 
-$$
+```math
 \langle +|-\rangle=0.
-$$
+```
 
 Applying a Hadamard gate reveals the difference:
 
-$$
+```math
 H|+\rangle=|0\rangle,
 \qquad
 H|-\rangle=|1\rangle.
-$$
+```
 
 This is the simplest example of **interference**.
 
@@ -69,7 +69,7 @@ This is the simplest example of **interference**.
 
 The density operator for the pure state $|+\rangle$ is
 
-$$
+```math
 |+\rangle\langle+|
 =
 \frac12
@@ -77,11 +77,11 @@ $$
 1&1\\
 1&1
 \end{pmatrix}.
-$$
+```
 
 The classical 50/50 mixture of $|0\rangle$ and $|1\rangle$ is
 
-$$
+```math
 \rho_{\mathrm{mix}}
 =
 \frac12|0\rangle\langle0|
@@ -89,7 +89,7 @@ $$
 \frac12|1\rangle\langle1|
 =
 \frac12 I.
-$$
+```
 
 The diagonal probabilities are the same in the computational basis, but the off-diagonal terms of the coherent state preserve phase information. This distinction between coherence and classical uncertainty is fundamental.
 
@@ -106,11 +106,11 @@ This has several consequences:
 
 The no-cloning theorem follows from linearity. If a unitary cloned arbitrary states, then for two states $|\psi\rangle$ and $|\phi\rangle$, preservation of inner products would require
 
-$$
+```math
 \langle\psi|\phi\rangle
 =
 \langle\psi|\phi\rangle^2,
-$$
+```
 
 which fails for generic nonorthogonal states.
 

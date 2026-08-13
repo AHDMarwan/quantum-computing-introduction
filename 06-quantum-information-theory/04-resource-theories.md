@@ -6,7 +6,7 @@ A resource theory formalizes the statement that some operations or states are ea
 
 A resource theory specifies
 
-$$
+```math
 \boxed{
 \text{free states}
 +
@@ -16,7 +16,7 @@ $$
 +
 \text{conversion tasks}
 }
-$$
+```
 
 The definition of “resource” is therefore relative to an operational restriction.
 
@@ -28,11 +28,11 @@ In the resource theory of entanglement, separable states are free and LOCC opera
 
 Fixing a reference basis, incoherent states are diagonal:
 
-$$
+```math
 \rho
 =
 \sum_i p_i|i\rangle\langle i|.
-$$
+```
 
 Off-diagonal coherence can be treated as a resource. Measures include relative entropy of coherence and $l_1$-norm coherence.
 
@@ -55,9 +55,9 @@ For fault-tolerant quantum computation, magic-state resources are particularly i
 
 A resource monotone $R(\rho)$ satisfies, at minimum, nonincrease under deterministic free transformations:
 
-$$
+```math
 R(\mathcal F(\rho))\le R(\rho).
-$$
+```
 
 Stronger conditions may involve convexity or monotonicity on average under selective operations.
 

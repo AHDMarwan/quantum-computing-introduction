@@ -19,7 +19,7 @@ Parameterized Quantum Circuit (PQC)
 
 The guiding principle is
 
-$$
+```math
 \boxed{
 \text{object}
 \neq
@@ -29,15 +29,15 @@ $$
 \neq
 \text{task}
 }
-$$
+```
 
 ## Parameterized Quantum Circuit (PQC)
 
 A **parameterized quantum circuit** is a quantum circuit containing free parameters:
 
-$$
+```math
 U(\boldsymbol\theta).
-$$
+```
 
 The term says nothing, by itself, about the purpose of the circuit or how its parameters are chosen.
 
@@ -49,7 +49,7 @@ An **ansatz** is a chosen family of candidate states or transformations intended
 
 For a state ansatz,
 
-$$
+```math
 \mathcal A
 =
 \left\{
@@ -57,7 +57,7 @@ $$
 :
 \boldsymbol\theta\in\Theta
 \right\}.
-$$
+```
 
 A PQC is one common way to implement an ansatz, but the two terms describe different conceptual levels.
 
@@ -67,7 +67,7 @@ A **variational quantum algorithm** is a hybrid optimization framework in which 
 
 A generic loop is
 
-$$
+```math
 \boldsymbol\theta_t
 \rightarrow
 U(\boldsymbol\theta_t)
@@ -77,7 +77,7 @@ C(\boldsymbol\theta_t)
 \text{classical optimizer}
 \rightarrow
 \boldsymbol\theta_{t+1}.
-$$
+```
 
 Thus, a PQC may be a component of a VQA, but a PQC is not itself a VQA.
 
@@ -87,11 +87,11 @@ Thus, a PQC may be a component of a VQA, but a PQC is not itself a VQA.
 
 Its objective has the form
 
-$$
+```math
 E(\boldsymbol\theta)
 =
 \langle\psi(\boldsymbol\theta)|H|\psi(\boldsymbol\theta)\rangle.
-$$
+```
 
 VQE is therefore an algorithmic application of a variational ansatz, not a synonym for PQC.
 
@@ -99,14 +99,14 @@ VQE is therefore an algorithmic application of a variational ansatz, not a synon
 
 **QAOA** is a structured variational algorithm for combinatorial optimization. A depth-$p$ QAOA state typically has the form
 
-$$
+```math
 |\psi(\boldsymbol\gamma,\boldsymbol\beta)\rangle
 =
 \prod_{j=1}^{p}
  e^{-i\beta_j H_M}
  e^{-i\gamma_j H_C}
 |+\rangle^{\otimes n}.
-$$
+```
 
 Its circuit is parameterized, so it is a PQC, while the complete procedure is a particular VQA.
 
@@ -147,9 +147,9 @@ It includes, among other areas:
 
 Therefore,
 
-$$
+```math
 \mathrm{QML}\neq\mathrm{PQC}\neq\mathrm{VQA}.
-$$
+```
 
 These concepts overlap, but they are not interchangeable.
 

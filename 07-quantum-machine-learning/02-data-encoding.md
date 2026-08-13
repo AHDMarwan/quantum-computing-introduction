@@ -4,15 +4,15 @@
 
 When input data are classical, a quantum learner must specify how they enter the quantum system. A feature map is a transformation
 
-$$
+```math
 x\longmapsto \rho(x)
-$$
+```
 
 or, for pure states,
 
-$$
+```math
 x\longmapsto|\phi(x)\rangle.
-$$
+```
 
 The cost of this transformation is part of the end-to-end complexity.
 
@@ -20,11 +20,11 @@ The cost of this transformation is part of the end-to-end complexity.
 
 A bit string can be mapped directly to a computational-basis state,
 
-$$
+```math
 x\in\{0,1\}^n
 \longmapsto
 |x\rangle.
-$$
+```
 
 This uses one qubit per input bit and is simple to prepare.
 
@@ -32,11 +32,11 @@ This uses one qubit per input bit and is simple to prepare.
 
 Features can parameterize rotations, for example
 
-$$
+```math
 |\phi(x)\rangle
 =
 \bigotimes_{j=1}^n R_y(x_j)|0\rangle.
-$$
+```
 
 This uses a constant number of gates per encoded feature but generally requires a number of qubits or repeated gates related to feature dimension.
 
@@ -44,12 +44,12 @@ This uses a constant number of gates per encoded feature but generally requires 
 
 A normalized vector $x\in\mathbb C^d$ can be encoded as
 
-$$
+```math
 |x\rangle
 =
 \frac1{\|x\|}
 \sum_{j=0}^{d-1}x_j|j\rangle,
-$$
+```
 
 using only $\lceil\log_2d\rceil$ qubits.
 
@@ -59,12 +59,12 @@ The compact qubit count can be misleading: generic state preparation may require
 
 Instead of encoding data once, one may alternate data-dependent and trainable layers:
 
-$$
+```math
 U(x,\theta)
 =
 \prod_{\ell}
 W_\ell(\theta_\ell)V_\ell(x).
-$$
+```
 
 Repeated encoding can increase functional expressivity even with few qubits.
 
@@ -72,11 +72,11 @@ Repeated encoding can increase functional expressivity even with few qubits.
 
 A feature map defines an implicit kernel
 
-$$
+```math
 K(x,x')
 =
 |\langle\phi(x)|\phi(x')\rangle|^2
-$$
+```
 
 or related overlaps. The value of a feature map therefore depends not on Hilbert-space dimension alone but on the induced geometry of the dataset and the difficulty of reproducing the relevant kernel classically.
 
@@ -99,11 +99,11 @@ An exponential quantum state space does not automatically create an exponential 
 
 Therefore
 
-$$
+```math
 \boxed{
 \text{quantum model complexity must include data access and preparation}
 }
-$$
+```
 
 rather than counting only the trainable circuit.
 

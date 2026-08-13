@@ -4,11 +4,11 @@
 
 Let $U$ be a unitary and suppose an eigenstate $|u\rangle$ is available such that
 
-$$
+```math
 U|u\rangle=e^{2\pi i\phi}|u\rangle,
 \qquad
 \phi\in[0,1).
-$$
+```
 
 Quantum phase estimation (QPE) estimates $\phi$.
 
@@ -16,15 +16,15 @@ Quantum phase estimation (QPE) estimates $\phi$.
 
 An ancilla qubit controlling $U$ transforms
 
-$$
+```math
 \frac{|0\rangle+|1\rangle}{\sqrt2}|u\rangle
-$$
+```
 
 into
 
-$$
+```math
 \frac{|0\rangle+e^{2\pi i\phi}|1\rangle}{\sqrt2}|u\rangle.
-$$
+```
 
 The eigenvalue phase is transferred to a measurable relative phase on the control register.
 
@@ -32,9 +32,9 @@ The eigenvalue phase is transferred to a measurable relative phase on the contro
 
 Using $m$ control qubits and controlled powers
 
-$$
+```math
 U^{2^0},U^{2^1},\ldots,U^{2^{m-1}},
-$$
+```
 
 the control register accumulates a Fourier-structured phase state. Applying the inverse quantum Fourier transform approximately maps this state to the $m$-bit binary representation of $\phi$.
 
@@ -42,15 +42,15 @@ the control register accumulates a Fourier-structured phase state. Applying the 
 
 The number of control qubits determines digital precision, while the dominant coherent cost is often implementing large controlled powers of $U$. In Hamiltonian problems where
 
-$$
+```math
 U=e^{-iHt},
-$$
+```
 
 phase estimation provides energy estimates because an energy eigenstate obeys
 
-$$
+```math
 e^{-iHt}|E_j\rangle=e^{-iE_jt}|E_j\rangle.
-$$
+```
 
 ## 5. Importance
 

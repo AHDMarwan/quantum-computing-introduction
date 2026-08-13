@@ -6,14 +6,14 @@ In reinforcement learning (RL), an agent interacts sequentially with an environm
 
 The objective is commonly the expected discounted return
 
-$$
+```math
 J(\pi)
 =
 \mathbb E_\pi
 \left[
 \sum_{t=0}^{\infty}\gamma^tr_t
 \right].
-$$
+```
 
 Quantum reinforcement learning asks how quantum information processing changes this framework.
 
@@ -32,12 +32,12 @@ These settings should not be conflated.
 
 A policy can be represented by a PQC,
 
-$$
+```math
 \pi_{\boldsymbol\theta}(a|s)
 =
-\operatorname{Tr}
+\mathrm{Tr}
 \left[E_a\rho_{\boldsymbol\theta}(s)\right],
-$$
+```
 
 where $E_a$ is a measurement effect associated with action $a$.
 

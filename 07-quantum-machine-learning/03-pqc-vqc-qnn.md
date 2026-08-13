@@ -8,9 +8,9 @@ The QML literature frequently uses overlapping labels for related objects. The s
 
 A PQC is simply a circuit depending on parameters:
 
-$$
+```math
 U(\boldsymbol\theta).
-$$
+```
 
 It can be used in chemistry, optimization, control, simulation, or machine learning. A PQC is not inherently a classifier or neural network.
 
@@ -18,11 +18,11 @@ It can be used in chemistry, optimization, control, simulation, or machine learn
 
 An ansatz is the candidate family
 
-$$
+```math
 \mathcal A
 =
 \{U(\boldsymbol\theta)|\psi_0\rangle:\boldsymbol\theta\in\Theta\}.
-$$
+```
 
 A PQC often implements the ansatz.
 
@@ -30,12 +30,12 @@ A PQC often implements the ansatz.
 
 When a parameterized quantum model is optimized through an objective, it is being used variationally. A generic learning model can be written
 
-$$
+```math
 f_{\boldsymbol\theta}(x)
 =
-\operatorname{Tr}
+\mathrm{Tr}
 \left[M\mathcal E_{\boldsymbol\theta,x}(\rho_0)\right].
-$$
+```
 
 The map $\mathcal E$ may be unitary or a more general channel.
 
@@ -50,9 +50,9 @@ In this repository we avoid the first meaning when possible. We use **PQC** for 
 
 A binary classifier might predict
 
-$$
-\hat y=\operatorname{sign}(f_{\boldsymbol\theta}(x)).
-$$
+```math
+\hat y=\mathrm{sign}(f_{\boldsymbol\theta}(x)).
+```
 
 ## 6. Quantum Neural Network (QNN)
 
@@ -64,35 +64,35 @@ Therefore a precise paper should define what it means by QNN rather than relying
 
 This repository uses
 
-$$
+```math
 \boxed{
 \text{PQC: circuit object}
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \text{ansatz: candidate family}
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \text{VQA: hybrid optimization framework}
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \text{VQC: classifier using a variational quantum model}
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \text{QNN: architecture-dependent learning terminology}
 }
-$$
+```
 
 ## 8. Relation to VQE and QAOA
 

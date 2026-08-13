@@ -4,11 +4,11 @@
 
 A statement such as “the quantum model performs better” is incomplete. Quantum advantage should specify an operational resource:
 
-$$
+```math
 \boxed{
 \text{runtime, queries, samples, copies, memory, communication, or approximation quality}
 }
-$$
+```
 
 under a stated input-access model.
 
@@ -39,11 +39,11 @@ A quantum model may represent certain functions or distributions compactly while
 
 Several celebrated quantum-inspired algorithms show that an apparent exponential quantum speedup can disappear when a classical algorithm is granted a comparable data-access model. This motivates an explicit question:
 
-$$
+```math
 \boxed{
 \text{Which genuinely quantum resource prevents efficient dequantization?}
 }
-$$
+```
 
 Candidates may include coherent access, noncommuting data, quantum memory, contextuality, entanglement structure, or other operational restrictions.
 

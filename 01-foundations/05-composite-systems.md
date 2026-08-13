@@ -4,54 +4,54 @@
 
 If system $A$ has Hilbert space $\mathcal H_A$ and system $B$ has Hilbert space $\mathcal H_B$, the joint system is described by
 
-$$
+```math
 \mathcal H_{AB}=\mathcal H_A\otimes\mathcal H_B.
-$$
+```
 
 For two qubits,
 
-$$
+```math
 \mathcal H_{AB}=\mathbb C^2\otimes\mathbb C^2\cong\mathbb C^4.
-$$
+```
 
 A standard basis is
 
-$$
+```math
 |00\rangle,\ |01\rangle,\ |10\rangle,\ |11\rangle.
-$$
+```
 
 For $n$ qubits,
 
-$$
+```math
 \mathcal H_n=(\mathbb C^2)^{\otimes n},
 \qquad
 \dim\mathcal H_n=2^n.
-$$
+```
 
 ## 2. Product states
 
 If
 
-$$
+```math
 |\psi\rangle_A=\alpha|0\rangle+\beta|1\rangle,
-$$
+```
 
 and
 
-$$
+```math
 |\phi\rangle_B=\gamma|0\rangle+\delta|1\rangle,
-$$
+```
 
 then
 
-$$
+```math
 |\psi\rangle_A\otimes|\phi\rangle_B
 =
 \alpha\gamma|00\rangle
 +\alpha\delta|01\rangle
 +\beta\gamma|10\rangle
 +\beta\delta|11\rangle.
-$$
+```
 
 States that can be written this way are product states. States that cannot are entangled.
 
@@ -59,21 +59,21 @@ States that can be written this way are product states. States that cannot are e
 
 An operator acting only on subsystem $A$ is represented on the joint space as
 
-$$
+```math
 A\otimes I_B.
-$$
+```
 
 Similarly, an operation on $B$ is
 
-$$
+```math
 I_A\otimes B.
-$$
+```
 
 Operators on distinct subsystems commute:
 
-$$
+```math
 [A\otimes I, I\otimes B]=0.
-$$
+```
 
 This simple rule is used constantly in circuit notation and Hamiltonian construction.
 
@@ -81,33 +81,33 @@ This simple rule is used constantly in circuit notation and Hamiltonian construc
 
 A controlled unitary has the form
 
-$$
+```math
 U_c
 =
 |0\rangle\langle0|\otimes I
 +
 |1\rangle\langle1|\otimes U.
-$$
+```
 
 The CNOT gate is the special case $U=X$:
 
-$$
-\operatorname{CNOT}|a,b\rangle
+```math
+\mathrm{CNOT}|a,b\rangle
 =
 |a,b\oplus a\rangle.
-$$
+```
 
 Applied to
 
-$$
+```math
 |+\rangle|0\rangle,
-$$
+```
 
 it produces
 
-$$
+```math
 \frac{|00\rangle+|11\rangle}{\sqrt2},
-$$
+```
 
 a Bell state. This demonstrates how local superposition plus an entangling interaction creates non-product correlations.
 
@@ -115,17 +115,17 @@ a Bell state. This demonstrates how local superposition plus an entangling inter
 
 A joint density operator $\rho_{AB}$ determines the local state of subsystem $A$ through the partial trace:
 
-$$
-\rho_A=\operatorname{Tr}_B(\rho_{AB}).
-$$
+```math
+\rho_A=\mathrm{Tr}_B(\rho_{AB}).
+```
 
 The partial trace is defined so that expectation values of local observables are preserved:
 
-$$
-\operatorname{Tr}\big[(A\otimes I)\rho_{AB}\big]
+```math
+\mathrm{Tr}\big[(A\otimes I)\rho_{AB}\big]
 =
-\operatorname{Tr}(A\rho_A).
-$$
+\mathrm{Tr}(A\rho_A).
+```
 
 This operation is essential because subsystems of a pure entangled state can be mixed.
 
@@ -139,9 +139,9 @@ This distinction is central when discussing claims that quantum machine learning
 
 Many physical Hamiltonians and quantum circuits are built from local terms, for example
 
-$$
+```math
 H=\sum_{(i,j)} H_{ij},
-$$
+```
 
 where each $H_{ij}$ acts on only a small number of subsystems. Locality strongly affects simulation cost, entanglement growth, circuit depth, trainability, and the structure of useful ansätze.
 

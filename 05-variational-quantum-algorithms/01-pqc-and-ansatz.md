@@ -4,17 +4,17 @@
 
 A parameterized quantum circuit (PQC) is a circuit whose unitary depends on continuous or discrete parameters,
 
-$$
+```math
 U(\boldsymbol\theta)
 =U_L(\theta_L)\cdots U_1(\theta_1).
-$$
+```
 
 For an initial state $|\psi_0\rangle$, the circuit prepares
 
-$$
+```math
 |\psi(\boldsymbol\theta)\rangle
 =U(\boldsymbol\theta)|\psi_0\rangle.
-$$
+```
 
 “PQC” describes the computational object. It does not specify the task, the loss, or even whether the parameters are optimized.
 
@@ -22,33 +22,33 @@ $$
 
 An ansatz is a chosen family of candidate states or transformations. For state preparation,
 
-$$
+```math
 \mathcal A
 =
 \{U(\boldsymbol\theta)|\psi_0\rangle:\boldsymbol\theta\in\Theta\}.
-$$
+```
 
 The term expresses a modeling assumption: the desired solution is expected to lie in, or be approximated by, the family.
 
 A PQC is a common implementation of an ansatz, but conceptually
 
-$$
+```math
 \text{ansatz} = \text{hypothesis family},
 \qquad
 \text{PQC} = \text{circuit realization}.
-$$
+```
 
 ## 3. Hardware-efficient ansätze
 
 A hardware-efficient ansatz typically alternates local parameterized rotations with native entangling layers:
 
-$$
+```math
 U(\boldsymbol\theta)
 =
 \prod_{\ell=1}^L
 U_{\rm ent}^{(\ell)}
 U_{\rm local}^{(\ell)}(\boldsymbol\theta_\ell).
-$$
+```
 
 These circuits can be shallow and compatible with device connectivity, but their trainability and symmetry properties must be analyzed rather than assumed.
 
@@ -58,11 +58,11 @@ Problem-inspired circuits encode known structure. Examples include particle-numb
 
 The tradeoff is often
 
-$$
+```math
 \text{more prior structure}
 \longleftrightarrow
 \text{smaller but better-aligned hypothesis space}.
-$$
+```
 
 ## 5. Expressibility is not sufficient
 
@@ -78,9 +78,9 @@ An ansatz capable of approximating many states may appear desirable, but excessi
 
 In QML one frequently uses
 
-$$
+```math
 U(x,\boldsymbol\theta),
-$$
+```
 
 where $x$ encodes data and $\boldsymbol\theta$ are trainable parameters. Data can appear in a separate feature map or be repeatedly re-uploaded throughout the circuit.
 

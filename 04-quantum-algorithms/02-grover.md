@@ -4,9 +4,9 @@
 
 Suppose a predicate marks $M$ solutions among $N$ possible items. Classically, unstructured search requires $O(N/M)$ predicate evaluations in the worst-case scaling sense. Grover-type quantum search finds a marked item using
 
-$$
+```math
 O\!\left(\sqrt{\frac{N}{M}}\right)
-$$
+```
 
 oracle calls.
 
@@ -16,39 +16,39 @@ For one marked item, this is $O(\sqrt N)$.
 
 Define normalized superpositions over good and bad states,
 
-$$
+```math
 |G\rangle,
 \qquad
 |B\rangle.
-$$
+```
 
 The uniform initial state can be written
 
-$$
+```math
 |s\rangle
 =
 \sin\theta|G\rangle
 +
 \cos\theta|B\rangle,
-$$
+```
 
 where
 
-$$
+```math
 \sin^2\theta=\frac{M}{N}.
-$$
+```
 
 The Grover iterate consists of two reflections: a phase flip on marked states and a reflection about the initial state. Their product is a rotation by $2\theta$ in the span of $|G\rangle,|B\rangle$.
 
 After $k$ iterations,
 
-$$
+```math
 G^k|s\rangle
 =
 \sin((2k+1)\theta)|G\rangle
 +
 \cos((2k+1)\theta)|B\rangle.
-$$
+```
 
 Choosing $k\approx \pi/(4\theta)$ gives high success probability.
 
@@ -56,9 +56,9 @@ Choosing $k\approx \pi/(4\theta)$ gives high success probability.
 
 Grover search is a special case of amplitude amplification. If an initial algorithm succeeds with probability
 
-$$
+```math
 p=\sin^2\theta,
-$$
+```
 
 coherent reflections can increase the good amplitude so that only $O(1/\sqrt p)$ uses of the underlying procedure are required rather than $O(1/p)$ independent repetitions.
 

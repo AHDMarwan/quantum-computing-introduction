@@ -4,17 +4,17 @@
 
 A VQA defines a cost
 
-$$
+```math
 C(\boldsymbol\theta)
-$$
+```
 
 that is estimated using a quantum processor. A classical optimizer then proposes new parameters:
 
-$$
+```math
 \boldsymbol\theta_{t+1}
 =
 \mathcal O\big(\boldsymbol\theta_t,\widehat C_t,\widehat{\nabla C}_t,\ldots\big).
-$$
+```
 
 The hats emphasize that quantities obtained from finite quantum measurements are statistical estimates.
 
@@ -28,11 +28,11 @@ A quantum device typically
 
 For an observable $H$,
 
-$$
+```math
 C(\boldsymbol\theta)
 =
 \langle\psi(\boldsymbol\theta)|H|\psi(\boldsymbol\theta)\rangle.
-$$
+```
 
 ## 3. Classical role
 
@@ -42,19 +42,19 @@ The classical controller handles parameter updates, stopping rules, constraints,
 
 For a Hermitian Hamiltonian $H$ with ground energy $E_0$, every normalized trial state satisfies
 
-$$
+```math
 \langle\psi|H|\psi\rangle\ge E_0.
-$$
+```
 
 Therefore minimizing the energy over an ansatz gives an upper bound to the ground-state energy:
 
-$$
+```math
 E_{\rm var}
 =
 \min_{\boldsymbol\theta}
 \langle\psi(\boldsymbol\theta)|H|\psi(\boldsymbol\theta)\rangle
 \ge E_0.
-$$
+```
 
 This principle underlies VQE but not every VQA.
 
@@ -62,7 +62,7 @@ This principle underlies VQE but not every VQA.
 
 A VQA can fail because of several distinct errors:
 
-$$
+```math
 \text{total error}
 \approx
 \text{ansatz error}
@@ -72,7 +72,7 @@ $$
 \text{sampling error}
 +
 \text{hardware error}.
-$$
+```
 
 These sources should not be conflated. A good optimizer cannot fix an ansatz that excludes the solution; a perfect ansatz is not enough if gradients vanish or hardware noise dominates.
 

@@ -6,11 +6,11 @@ For pure bipartite states, entanglement is equivalent to non-factorizability. Fo
 
 A separable state has the form
 
-$$
+```math
 \rho_{AB}
 =
 \sum_j p_j\rho_A^{(j)}\otimes\rho_B^{(j)}.
-$$
+```
 
 Any state that cannot be expressed this way is entangled.
 
@@ -18,17 +18,17 @@ Any state that cannot be expressed this way is entangled.
 
 For a bipartite pure state $|\psi\rangle_{AB}$, the entanglement entropy is
 
-$$
+```math
 E(|\psi\rangle)
 =S(\rho_A)=S(\rho_B).
-$$
+```
 
 Using the Schmidt coefficients $\lambda_j$,
 
-$$
+```math
 E(|\psi\rangle)
 =-\sum_j\lambda_j\log\lambda_j.
-$$
+```
 
 It vanishes exactly for product states and is maximal for maximally entangled states of fixed local dimension.
 
@@ -48,9 +48,9 @@ Different measures answer different operational questions.
 
 For a bipartite state, partial transpose with respect to subsystem $B$ is denoted
 
-$$
+```math
 \rho^{T_B}.
-$$
+```
 
 Every separable state has positive partial transpose (PPT). For $2\times2$ and $2\times3$ systems, PPT is also sufficient for separability. In larger dimensions, PPT entangled states can exist.
 

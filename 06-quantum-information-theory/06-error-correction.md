@@ -8,18 +8,18 @@ Unknown quantum states cannot be copied, and direct measurement can destroy cohe
 
 A logical qubit is represented by code states
 
-$$
+```math
 |0_L\rangle,\qquad|1_L\rangle
-$$
+```
 
 inside a larger physical space. A general logical state is
 
-$$
+```math
 |\psi_L\rangle
 =
 \alpha|0_L\rangle+
 \beta|1_L\rangle.
-$$
+```
 
 The goal is to diagnose physical errors while preserving $\alpha$ and $\beta$.
 
@@ -27,10 +27,10 @@ The goal is to diagnose physical errors while preserving $\alpha$ and $\beta$.
 
 A code with projector $P$ can correct a set of errors $\{E_a\}$ if
 
-$$
+```math
 PE_a^\dagger E_bP
 =c_{ab}P.
-$$
+```
 
 This condition states that correctable errors do not reveal logical-state information to the environment and remain distinguishable in the appropriate syndrome structure.
 
@@ -66,11 +66,11 @@ A logical circuit's practical cost must include error-correction overhead. A hig
 
 Therefore
 
-$$
+```math
 \text{algorithmic qubit count}
 \neq
 \text{physical hardware qubit count}.
-$$
+```
 
 ## References
 

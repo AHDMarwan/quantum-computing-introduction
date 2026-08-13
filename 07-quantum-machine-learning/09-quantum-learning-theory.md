@@ -19,11 +19,11 @@ Classical learning theory studies hypothesis classes, generalization, PAC learni
 
 A quantum example can be modeled as a state containing labels coherently, for example
 
-$$
+```math
 |\psi_c\rangle
 =
 \sum_x\sqrt{D(x)}|x,c(x)\rangle.
-$$
+```
 
 This is a stronger access model than receiving independent classical samples $(x,c(x))$. Any claimed speedup must state which model is assumed.
 
@@ -54,11 +54,11 @@ These results are crucial when evaluating claims of exponential speedup.
 
 Learning theory forces a clean statement:
 
-$$
+```math
 \boxed{
 \text{task + access model + success criterion + resource measure}
 }
-$$
+```
 
 Without all four, “quantum advantage in learning” is under-specified.
 

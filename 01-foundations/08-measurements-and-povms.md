@@ -8,55 +8,55 @@ A quantum state is not directly readable as a list of amplitudes. Measurement pr
 
 Let
 
-$$
+```math
 A=\sum_a aP_a
-$$
+```
 
 be a spectral decomposition with orthogonal projectors $P_a$. Measuring $A$ on state $\rho$ gives outcome $a$ with probability
 
-$$
-p(a)=\operatorname{Tr}(P_a\rho).
-$$
+```math
+p(a)=\mathrm{Tr}(P_a\rho).
+```
 
 For a pure state,
 
-$$
+```math
 p(a)=\langle\psi|P_a|\psi\rangle.
-$$
+```
 
 The expectation value is
 
-$$
+```math
 \mathbb E[A]
 =
 \sum_a a\,p(a)
 =
-\operatorname{Tr}(A\rho).
-$$
+\mathrm{Tr}(A\rho).
+```
 
 ## 3. Computational-basis measurement
 
 For one qubit,
 
-$$
+```math
 P_0=|0\rangle\langle0|,
 \qquad
 P_1=|1\rangle\langle1|.
-$$
+```
 
 If
 
-$$
+```math
 |\psi\rangle=\alpha|0\rangle+\beta|1\rangle,
-$$
+```
 
 then
 
-$$
+```math
 p(0)=|\alpha|^2,
 \qquad
 p(1)=|\beta|^2.
-$$
+```
 
 For an $n$-qubit state, computational-basis sampling returns a bit string $z\in\{0,1\}^n$.
 
@@ -64,23 +64,23 @@ For an $n$-qubit state, computational-basis sampling returns a bit string $z\in\
 
 A positive-operator-valued measure is a collection of positive semidefinite operators
 
-$$
+```math
 \{E_y\}_y
-$$
+```
 
 satisfying
 
-$$
+```math
 E_y\succeq0,
 \qquad
 \sum_y E_y=I.
-$$
+```
 
 The probability of outcome $y$ is
 
-$$
-p(y)=\operatorname{Tr}(E_y\rho).
-$$
+```math
+p(y)=\mathrm{Tr}(E_y\rho).
+```
 
 POVM elements need not be orthogonal projectors. This extra freedom is important in optimal state discrimination and information extraction.
 
@@ -88,17 +88,17 @@ POVM elements need not be orthogonal projectors. This extra freedom is important
 
 A POVM specifies outcome probabilities but does not fully specify the post-measurement state. A **quantum instrument** provides both the classical outcome and the conditional state transformation. If $\mathcal I_y$ is the operation associated with outcome $y$, then
 
-$$
-p(y)=\operatorname{Tr}[\mathcal I_y(\rho)],
-$$
+```math
+p(y)=\mathrm{Tr}[\mathcal I_y(\rho)],
+```
 
 and the normalized post-measurement state is
 
-$$
+```math
 \rho_y
 =
 \frac{\mathcal I_y(\rho)}{p(y)}.
-$$
+```
 
 This distinction becomes important for adaptive protocols and sequential learning.
 
@@ -106,17 +106,17 @@ This distinction becomes important for adaptive protocols and sequential learnin
 
 If
 
-$$
+```math
 [A,B]\neq0,
-$$
+```
 
 then the two observables generally do not share a complete eigenbasis. Quantum theory therefore lacks a single classical joint assignment reproducing all measurement contexts in the naive way.
 
 For Pauli matrices,
 
-$$
+```math
 [X,Z]\neq0.
-$$
+```
 
 An eigenstate of $Z$ is not an eigenstate of $X$. This incompatibility is a structural resource in quantum information.
 
@@ -124,9 +124,9 @@ An eigenstate of $Z$ is not an eigenstate of $X$. This incompatibility is a stru
 
 A real quantum processor estimates expectation values from a finite number $N$ of measurement shots. For a bounded observable, the empirical estimator has statistical uncertainty scaling generically as
 
-$$
+```math
 O(N^{-1/2}).
-$$
+```
 
 Thus measurement cost is part of quantum-algorithm complexity. In variational algorithms and QML, a model evaluation is not an exact floating-point function call; it is often a statistical estimation procedure.
 

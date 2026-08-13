@@ -6,14 +6,14 @@ A barren plateau is a regime in which cost-function gradients concentrate around
 
 A characteristic scaling is
 
-$$
-\operatorname{Var}
+```math
+\mathrm{Var}
 \left[
 \frac{\partial C}{\partial\theta_j}
 \right]
 \in O(b^{-n}),
 \qquad b>1,
-$$
+```
 
 for certain circuit ensembles and costs.
 
@@ -35,11 +35,11 @@ Noise can contract distinguishability and suppress gradient information. This cr
 
 Highly expressive random-like circuits can approximate broad state ensembles, but that same behavior can make local parameter changes statistically invisible. Hence
 
-$$
+```math
 \text{more expressivity}
 \not\Rightarrow
 \text{better trainability}.
-$$
+```
 
 This is a central lesson for QML architecture design.
 

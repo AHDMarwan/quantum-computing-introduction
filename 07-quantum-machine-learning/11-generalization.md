@@ -6,27 +6,27 @@ A model generalizes when performance on unseen data is controlled by information
 
 For a loss $\ell$, define population risk
 
-$$
+```math
 R(\theta)
 =
 \mathbb E_{(x,y)\sim\mathcal D}
 \ell(f_\theta(x),y)
-$$
+```
 
 and empirical risk
 
-$$
+```math
 \widehat R_S(\theta)
 =
 \frac1m\sum_{i=1}^m
 \ell(f_\theta(x_i),y_i).
-$$
+```
 
 The generalization gap is
 
-$$
+```math
 R(\theta)-\widehat R_S(\theta).
-$$
+```
 
 ## 2. QML does not escape statistical learning theory
 
@@ -67,9 +67,9 @@ If the target law is invariant under a group $G$, an equivariant or invariant mo
 
 This suggests a research principle:
 
-$$
+```math
 \text{use physical structure as inductive bias rather than maximizing generic expressivity}.
-$$
+```
 
 ## References
 

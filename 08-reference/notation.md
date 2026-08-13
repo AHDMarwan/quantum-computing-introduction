@@ -15,8 +15,8 @@ This file defines the default mathematical notation used throughout the reposito
 | $\rho$ | Density operator / density matrix |
 | $I$ | Identity operator |
 | $A^\dagger$ | Adjoint (conjugate transpose) of operator $A$ |
-| $\operatorname{Tr}(A)$ | Trace of $A$ |
-| $\operatorname{Tr}_B(\rho_{AB})$ | Partial trace over subsystem $B$ |
+| $\mathrm{Tr}(A)$ | Trace of $A$ |
+| $\mathrm{Tr}_B(\rho_{AB})$ | Partial trace over subsystem $B$ |
 
 ## Quantum Dynamics
 
@@ -36,7 +36,7 @@ This file defines the default mathematical notation used throughout the reposito
 | $M$ | Observable or measurement operator, depending on context |
 | $\{E_y\}_y$ | POVM with outcome labels $y$ |
 | $p(y)$ | Probability of outcome $y$ |
-| $\langle M\rangle_\rho$ | Expectation value $\operatorname{Tr}(\rho M)$ |
+| $\langle M\rangle_\rho$ | Expectation value $\mathrm{Tr}(\rho M)$ |
 
 ## Quantum Computing
 

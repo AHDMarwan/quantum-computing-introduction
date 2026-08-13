@@ -6,9 +6,9 @@ Trapped-ion quantum computers confine charged atoms using electromagnetic fields
 
 A register may be represented schematically as
 
-$$
+```math
 |q_1q_2\cdots q_n\rangle,
-$$
+```
 
 while collective motional modes of the ion crystal mediate interactions.
 

@@ -6,11 +6,11 @@ The Quantum Approximate Optimization Algorithm (QAOA) is a gate-based variationa
 
 For MaxCut on graph $G=(V,E)$, one can use
 
-$$
+```math
 H_C
 =
 \frac12\sum_{(i,j)\in E}(I-Z_iZ_j).
-$$
+```
 
 Its expectation corresponds to cut quality.
 
@@ -18,26 +18,26 @@ Its expectation corresponds to cut quality.
 
 A standard mixer is
 
-$$
+```math
 H_M=\sum_i X_i.
-$$
+```
 
 At depth $p$, the QAOA state is
 
-$$
+```math
 |\boldsymbol\gamma,\boldsymbol\beta\rangle
 =
 \prod_{\ell=1}^{p}
  e^{-i\beta_\ell H_M}
  e^{-i\gamma_\ell H_C}
 |+\rangle^{\otimes n}.
-$$
+```
 
 The parameters are optimized to maximize
 
-$$
+```math
 \langle H_C\rangle.
-$$
+```
 
 ## 3. What $p$ means
 

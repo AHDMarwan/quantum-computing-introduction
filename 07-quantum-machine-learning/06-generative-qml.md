@@ -10,18 +10,18 @@ Quantum systems naturally produce probability distributions through measurement,
 
 A parameterized state
 
-$$
+```math
 |\psi(\boldsymbol\theta)\rangle
 =
 \sum_x \psi_{\boldsymbol\theta}(x)|x\rangle
-$$
+```
 
 induces the Born distribution
 
-$$
+```math
 p_{\boldsymbol\theta}(x)
 =|\psi_{\boldsymbol\theta}(x)|^2.
-$$
+```
 
 Training attempts to make this distribution approximate a target data distribution.
 
