@@ -1,0 +1,112 @@
+name: Normalize GitHub math
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-math:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize Markdown mathematics
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          changed = []
+          problems = []
+
+          for path in Path('.').rglob('*.md'):
+              text = path.read_text(encoding='utf-8')
+              lines = text.splitlines()
+              out = []
+              in_display_math = False
+
+              for lineno, line in enumerate(lines, 1):
+                  stripped = line.strip()
+
+                  # Convert one-line display math: $$ ... $$
+                  m = re.fullmatch(r'\s*\$\$(.+)\$\$\s*', line)
+                  if m and not in_display_math:
+                      out.append('```math')
+                      out.append(m.group(1).strip())
+                      out.append('```')
+                      continue
+
+                  # Convert multiline display delimiters to GitHub's robust math fence.
+                  if stripped == '$$':
+                      if not in_display_math:
+                          out.append('```math')
+                          in_display_math = True
+                      else:
+                          out.append('```')
+                          in_display_math = False
+                      continue
+
+                  out.append(line)
+
+              if in_display_math:
+                  problems.append(f'{path}: unmatched display-math delimiter')
+                  continue
+
+              new = '\n'.join(out) + ('\n' if text.endswith('\n') else '')
+
+              # GitHub rejects \operatorname in its math renderer in some contexts.
+              # Use a presentation-safe roman identifier instead.
+              new = re.sub(r'\\operatorname\{([^{}]+)\}', r'\\mathrm{\1}', new)
+
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append(str(path))
+
+          if problems:
+              print('\n'.join(problems))
+              raise SystemExit(1)
+
+          print(f'Changed {len(changed)} Markdown files')
+          for p in changed:
+              print(p)
+          PY
+
+      - name: Validate normalized math
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          errors = []
+          for path in Path('.').rglob('*.md'):
+              text = path.read_text(encoding='utf-8')
+              for i, line in enumerate(text.splitlines(), 1):
+                  if line.strip() == '$$':
+                      errors.append(f'{path}:{i}: leftover standalone $$ delimiter')
+              if r'\operatorname{' in text:
+                  errors.append(f'{path}: leftover \\operatorname macro')
+
+          if errors:
+              print('\n'.join(errors))
+              raise SystemExit(1)
+          print('Math validation passed.')
+          PY
+
+      - name: Commit normalized Markdown
+        shell: bash
+        run: |
+          if git diff --quiet -- '*.md'; then
+            echo 'No Markdown changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.md'
+          git commit -m 'Normalize GitHub math rendering'
+          git push
