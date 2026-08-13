@@ -6,33 +6,33 @@ Quantum annealing formulates optimization as finding low-energy configurations o
 
 An Ising form is
 
-\[
+$$
 H_P=\sum_i h_i Z_i+\sum_{i<j}J_{ij}Z_iZ_j.
-\]
+$$
 
 A transverse-field driver is commonly chosen as
 
-\[
+$$
 H_D=-\sum_i X_i.
-\]
+$$
 
-The system is evolved from a regime dominated by \(H_D\) toward one dominated by \(H_P\).
+The system is evolved from a regime dominated by $H_D$ toward one dominated by $H_P$.
 
 ## 2. QUBO mapping
 
 A quadratic unconstrained binary optimization problem has objective
 
-\[
+$$
 C(x)=x^TQx,
 \qquad x_i\in\{0,1\}.
-\]
+$$
 
 Using
 
-\[
+$$
 x_i=\frac{1-z_i}{2},
 \qquad z_i\in\{-1,+1\},
-\]
+$$
 
 one can map QUBO objectives to Ising energies.
 

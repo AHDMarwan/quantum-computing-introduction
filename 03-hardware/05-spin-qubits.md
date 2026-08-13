@@ -6,11 +6,11 @@ Spin qubits encode information in electronic or nuclear spin degrees of freedom,
 
 A simple electron-spin encoding is
 
-\[
+$$
 |0\rangle\equiv|\downarrow\rangle,
 \qquad
 |1\rangle\equiv|\uparrow\rangle.
-\]
+$$
 
 ## 2. Control
 

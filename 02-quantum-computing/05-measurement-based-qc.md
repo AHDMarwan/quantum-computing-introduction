@@ -8,13 +8,13 @@ The canonical resource is a cluster or graph state.
 
 ## 2. Graph-state resource
 
-Given a graph \(G=(V,E)\), a graph state can be prepared by placing each vertex in \(|+\rangle\) and applying controlled-\(Z\) gates along edges:
+Given a graph $G=(V,E)$, a graph state can be prepared by placing each vertex in $|+\rangle$ and applying controlled-$Z$ gates along edges:
 
-\[
+$$
 |G\rangle
 =
 \prod_{(i,j)\in E}CZ_{ij}|+\rangle^{\otimes |V|}.
-\]
+$$
 
 The state is prepared before most of the logical computation is known operationally.
 
@@ -36,9 +36,9 @@ Raussendorf and Briegel showed that suitable cluster states with adaptive single
 
 MBQC shows that
 
-\[
+$$
 \text{quantum computation}\neq\text{unitary gate sequence only}.
-\]
+$$
 
 It separates **resource-state preparation** from **computation by measurement**. This perspective is especially relevant when thinking about measurement-driven QML, photonic architectures, and resource theories of computation.
 

@@ -2,15 +2,15 @@
 
 ## 1. Problem setting
 
-The Quantum Approximate Optimization Algorithm (QAOA) is a gate-based variational algorithm for discrete optimization. A classical cost function is encoded into a diagonal cost Hamiltonian \(H_C\).
+The Quantum Approximate Optimization Algorithm (QAOA) is a gate-based variational algorithm for discrete optimization. A classical cost function is encoded into a diagonal cost Hamiltonian $H_C$.
 
-For MaxCut on graph \(G=(V,E)\), one can use
+For MaxCut on graph $G=(V,E)$, one can use
 
-\[
+$$
 H_C
 =
 \frac12\sum_{(i,j)\in E}(I-Z_iZ_j).
-\]
+$$
 
 Its expectation corresponds to cut quality.
 
@@ -18,36 +18,36 @@ Its expectation corresponds to cut quality.
 
 A standard mixer is
 
-\[
+$$
 H_M=\sum_i X_i.
-\]
+$$
 
-At depth \(p\), the QAOA state is
+At depth $p$, the QAOA state is
 
-\[
+$$
 |\boldsymbol\gamma,\boldsymbol\beta\rangle
 =
 \prod_{\ell=1}^{p}
  e^{-i\beta_\ell H_M}
  e^{-i\gamma_\ell H_C}
 |+\rangle^{\otimes n}.
-\]
+$$
 
 The parameters are optimized to maximize
 
-\[
+$$
 \langle H_C\rangle.
-\]
+$$
 
-## 3. What \(p\) means
+## 3. What $p$ means
 
-The integer \(p\) is the number of alternating cost/mixer layers. Increasing \(p\) enlarges the variational family and generally increases circuit depth and optimization difficulty.
+The integer $p$ is the number of alternating cost/mixer layers. Increasing $p$ enlarges the variational family and generally increases circuit depth and optimization difficulty.
 
 In the ideal limit, suitable QAOA constructions connect conceptually with adiabatic evolution, but finite-depth QAOA is a distinct variational algorithm.
 
 ## 4. Mixers and constraints
 
-The standard \(X\)-mixer explores the full binary space. For constrained optimization, alternative mixers can preserve feasibility subspaces. This is an example of encoding problem structure directly into the ansatz.
+The standard $X$-mixer explores the full binary space. For constrained optimization, alternative mixers can preserve feasibility subspaces. This is an example of encoding problem structure directly into the ansatz.
 
 ## 5. Approximation and advantage
 

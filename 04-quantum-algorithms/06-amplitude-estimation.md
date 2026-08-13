@@ -2,43 +2,43 @@
 
 ## 1. Problem
 
-Suppose a unitary \(A\) prepares
+Suppose a unitary $A$ prepares
 
-\[
+$$
 A|0\rangle
 =
 \sqrt{1-a}\,|\psi_0\rangle|0\rangle
 +
 \sqrt a\,|\psi_1\rangle|1\rangle,
-\]
+$$
 
-where \(a\in[0,1]\) is an unknown probability of interest. Amplitude estimation seeks to estimate \(a\).
+where $a\in[0,1]$ is an unknown probability of interest. Amplitude estimation seeks to estimate $a$.
 
 ## 2. Quadratic precision improvement
 
-Classical Monte Carlo estimation of a probability to additive error \(\epsilon\) requires
+Classical Monte Carlo estimation of a probability to additive error $\epsilon$ requires
 
-\[
+$$
 O(1/\epsilon^2)
-\]
+$$
 
 independent samples in the standard setting. Ideal quantum amplitude estimation can achieve
 
-\[
+$$
 O(1/\epsilon)
-\]
+$$
 
 uses of coherent state-preparation/reflection primitives, giving a quadratic query-complexity improvement.
 
 ## 3. Relation to Grover rotations
 
-As in amplitude amplification, define an angle \(\theta\) such that
+As in amplitude amplification, define an angle $\theta$ such that
 
-\[
+$$
 a=\sin^2\theta.
-\]
+$$
 
-A Grover-like operator acts as a rotation whose eigenphases encode \(\theta\). Original amplitude estimation applies phase estimation to this operator and then converts the estimated phase into \(a\).
+A Grover-like operator acts as a rotation whose eigenphases encode $\theta$. Original amplitude estimation applies phase estimation to this operator and then converts the estimated phase into $a$.
 
 ## 4. Modern variants
 
@@ -58,7 +58,7 @@ The practical value depends on whether the probability distribution and payoff f
 
 ## 6. Input-loading caveat
 
-A formal \(O(1/\epsilon)\) oracle complexity does not automatically yield an end-to-end quadratic speedup if preparing \(A\), implementing reflections, or loading classical distributions dominates the cost. Access assumptions must therefore be explicit.
+A formal $O(1/\epsilon)$ oracle complexity does not automatically yield an end-to-end quadratic speedup if preparing $A$, implementing reflections, or loading classical distributions dominates the cost. Access assumptions must therefore be explicit.
 
 ## References
 

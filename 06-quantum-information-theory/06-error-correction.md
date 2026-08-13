@@ -8,29 +8,29 @@ Unknown quantum states cannot be copied, and direct measurement can destroy cohe
 
 A logical qubit is represented by code states
 
-\[
+$$
 |0_L\rangle,\qquad|1_L\rangle
-\]
+$$
 
 inside a larger physical space. A general logical state is
 
-\[
+$$
 |\psi_L\rangle
 =
 \alpha|0_L\rangle+
 \beta|1_L\rangle.
-\]
+$$
 
-The goal is to diagnose physical errors while preserving \(\alpha\) and \(\beta\).
+The goal is to diagnose physical errors while preserving $\alpha$ and $\beta$.
 
 ## 3. Knill–Laflamme condition
 
-A code with projector \(P\) can correct a set of errors \(\{E_a\}\) if
+A code with projector $P$ can correct a set of errors $\{E_a\}$ if
 
-\[
+$$
 PE_a^\dagger E_bP
 =c_{ab}P.
-\]
+$$
 
 This condition states that correctable errors do not reveal logical-state information to the environment and remain distinguishable in the appropriate syndrome structure.
 
@@ -62,15 +62,15 @@ Fault-tolerant protocols ensure that a small number of physical faults do not sp
 
 ## 7. Why this matters for algorithms
 
-A logical circuit's practical cost must include error-correction overhead. A high-level algorithm using \(n\) logical qubits may require far more physical qubits and many cycles of syndrome extraction.
+A logical circuit's practical cost must include error-correction overhead. A high-level algorithm using $n$ logical qubits may require far more physical qubits and many cycles of syndrome extraction.
 
 Therefore
 
-\[
+$$
 \text{algorithmic qubit count}
 \neq
 \text{physical hardware qubit count}.
-\]
+$$
 
 ## References
 

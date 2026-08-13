@@ -8,21 +8,21 @@ Quantum information is not obtained by replacing a classical probability distrib
 
 A classical bit takes a definite value in
 
-\[
+$$
 \{0,1\}.
-\]
+$$
 
 If the value is uncertain, we use a probability distribution
 
-\[
+$$
 p=(p_0,p_1),\qquad p_0+p_1=1.
-\]
+$$
 
 For example, a fair random bit has
 
-\[
+$$
 p_0=p_1=\frac12.
-\]
+$$
 
 Classical randomness describes uncertainty about which alternative is realized. If a reversible classical transformation is applied, it permutes basis states. More general stochastic processes map probability distributions to probability distributions.
 
@@ -30,46 +30,46 @@ Classical randomness describes uncertainty about which alternative is realized. 
 
 A pure qubit state is
 
-\[
+$$
 |\psi\rangle=\alpha|0\rangle+\beta|1\rangle,
 \qquad |\alpha|^2+|\beta|^2=1.
-\]
+$$
 
-The coefficients \(\alpha,\beta\in\mathbb C\) are amplitudes. A computational-basis measurement gives
+The coefficients $\alpha,\beta\in\mathbb C$ are amplitudes. A computational-basis measurement gives
 
-\[
+$$
 P(0)=|\alpha|^2,\qquad P(1)=|\beta|^2.
-\]
+$$
 
 The phase is not visible in this measurement alone. Compare
 
-\[
+$$
 |+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt2},
 \qquad
 |-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt2}.
-\]
+$$
 
-Both produce \(0\) and \(1\) with probability \(1/2\) in the computational basis, but they are orthogonal states:
+Both produce $0$ and $1$ with probability $1/2$ in the computational basis, but they are orthogonal states:
 
-\[
+$$
 \langle +|-\rangle=0.
-\]
+$$
 
 Applying a Hadamard gate reveals the difference:
 
-\[
+$$
 H|+\rangle=|0\rangle,
 \qquad
 H|-\rangle=|1\rangle.
-\]
+$$
 
 This is the simplest example of **interference**.
 
 ## 4. Superposition is not classical ignorance
 
-The density operator for the pure state \(|+\rangle\) is
+The density operator for the pure state $|+\rangle$ is
 
-\[
+$$
 |+\rangle\langle+|
 =
 \frac12
@@ -77,11 +77,11 @@ The density operator for the pure state \(|+\rangle\) is
 1&1\\
 1&1
 \end{pmatrix}.
-\]
+$$
 
-The classical 50/50 mixture of \(|0\rangle\) and \(|1\rangle\) is
+The classical 50/50 mixture of $|0\rangle$ and $|1\rangle$ is
 
-\[
+$$
 \rho_{\mathrm{mix}}
 =
 \frac12|0\rangle\langle0|
@@ -89,7 +89,7 @@ The classical 50/50 mixture of \(|0\rangle\) and \(|1\rangle\) is
 \frac12|1\rangle\langle1|
 =
 \frac12 I.
-\]
+$$
 
 The diagonal probabilities are the same in the computational basis, but the off-diagonal terms of the coherent state preserve phase information. This distinction between coherence and classical uncertainty is fundamental.
 
@@ -104,19 +104,19 @@ This has several consequences:
 - incompatible measurements expose different features of the same state,
 - and a state cannot generally be copied perfectly when it is unknown.
 
-The no-cloning theorem follows from linearity. If a unitary cloned arbitrary states, then for two states \(|\psi\rangle\) and \(|\phi\rangle\), preservation of inner products would require
+The no-cloning theorem follows from linearity. If a unitary cloned arbitrary states, then for two states $|\psi\rangle$ and $|\phi\rangle$, preservation of inner products would require
 
-\[
+$$
 \langle\psi|\phi\rangle
 =
 \langle\psi|\phi\rangle^2,
-\]
+$$
 
 which fails for generic nonorthogonal states.
 
 ## 6. Where quantum advantage can come from
 
-The mere presence of a vector with \(2^n\) amplitudes does not yield an automatic computational speedup. Quantum algorithms must arrange amplitudes so that interference and measurement expose useful global information with fewer resources than a relevant classical procedure.
+The mere presence of a vector with $2^n$ amplitudes does not yield an automatic computational speedup. Quantum algorithms must arrange amplitudes so that interference and measurement expose useful global information with fewer resources than a relevant classical procedure.
 
 Possible resources include
 

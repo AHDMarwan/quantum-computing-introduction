@@ -13,7 +13,7 @@ Quantum information theory studies the structure, transformation, communication,
 
 ## Core mathematical objects
 
-\[
+$$
 \boxed{
 \text{states }\rho,
 \quad
@@ -25,6 +25,6 @@ Quantum information theory studies the structure, transformation, communication,
 \quad
 \text{resources}
 }
-\]
+$$
 
 The same objects reappear in quantum algorithms and quantum machine learning.

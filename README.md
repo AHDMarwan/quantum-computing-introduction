@@ -116,7 +116,7 @@ Start here if you want the mathematical language from first principles.
 
 The repository keeps the following levels separate:
 
-\[
+$$
 \boxed{
 \text{physical platform}
 \neq
@@ -128,7 +128,7 @@ The repository keeps the following levels separate:
 \neq
 \text{task}
 }
-\]
+$$
 
 In particular:
 

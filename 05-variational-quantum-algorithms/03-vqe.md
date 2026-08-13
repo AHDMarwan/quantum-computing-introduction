@@ -6,52 +6,52 @@ The Variational Quantum Eigensolver (VQE) estimates low-energy eigenvalues of a 
 
 Given
 
-\[
+$$
 H|E_j\rangle=E_j|E_j\rangle,
-\]
+$$
 
 VQE prepares an ansatz
 
-\[
+$$
 |\psi(\boldsymbol\theta)\rangle
 =U(\boldsymbol\theta)|\psi_0\rangle
-\]
+$$
 
 and minimizes
 
-\[
+$$
 E(\boldsymbol\theta)
 =
 \langle\psi(\boldsymbol\theta)|H|\psi(\boldsymbol\theta)\rangle.
-\]
+$$
 
 By the variational principle,
 
-\[
+$$
 E(\boldsymbol\theta)\ge E_0.
-\]
+$$
 
 ## 2. Hamiltonian decomposition
 
 After mapping a fermionic or physical problem to qubits, the Hamiltonian is commonly expressed as a Pauli sum,
 
-\[
+$$
 H=\sum_j c_jP_j,
-\]
+$$
 
-where \(P_j\) are Pauli strings such as
+where $P_j$ are Pauli strings such as
 
-\[
+$$
 X\otimes Z\otimes I\otimes Y.
-\]
+$$
 
 Then
 
-\[
+$$
 E(\boldsymbol\theta)
 =
 \sum_j c_j\langle P_j\rangle_{\boldsymbol\theta}.
-\]
+$$
 
 The expectation values are estimated from measurements.
 

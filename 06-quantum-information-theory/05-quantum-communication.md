@@ -13,7 +13,7 @@ Quantum communication studies how information can be transmitted when channels a
 
 ## 2. Teleportation
 
-Suppose Alice and Bob share a Bell pair. Alice also holds an unknown qubit \(|\psi\rangle\). Quantum teleportation allows Bob to recover \(|\psi\rangle\) using
+Suppose Alice and Bob share a Bell pair. Alice also holds an unknown qubit $|\psi\rangle$. Quantum teleportation allows Bob to recover $|\psi\rangle$ using
 
 - one shared ebit,
 - a Bell-basis measurement by Alice,

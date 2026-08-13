@@ -2,7 +2,7 @@
 
 ## 1. Generative learning
 
-A generative model aims to learn a probability distribution, quantum state, or data-generating process rather than only a discriminative map \(x\mapsto y\).
+A generative model aims to learn a probability distribution, quantum state, or data-generating process rather than only a discriminative map $x\mapsto y$.
 
 Quantum systems naturally produce probability distributions through measurement, making them candidates for generative modeling.
 
@@ -10,18 +10,18 @@ Quantum systems naturally produce probability distributions through measurement,
 
 A parameterized state
 
-\[
+$$
 |\psi(\boldsymbol\theta)\rangle
 =
 \sum_x \psi_{\boldsymbol\theta}(x)|x\rangle
-\]
+$$
 
 induces the Born distribution
 
-\[
+$$
 p_{\boldsymbol\theta}(x)
 =|\psi_{\boldsymbol\theta}(x)|^2.
-\]
+$$
 
 Training attempts to make this distribution approximate a target data distribution.
 

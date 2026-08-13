@@ -4,29 +4,29 @@
 
 A model generalizes when performance on unseen data is controlled by information obtained from the training set rather than by memorization alone.
 
-For a loss \(\ell\), define population risk
+For a loss $\ell$, define population risk
 
-\[
+$$
 R(\theta)
 =
 \mathbb E_{(x,y)\sim\mathcal D}
 \ell(f_\theta(x),y)
-\]
+$$
 
 and empirical risk
 
-\[
+$$
 \widehat R_S(\theta)
 =
 \frac1m\sum_{i=1}^m
 \ell(f_\theta(x_i),y_i).
-\]
+$$
 
 The generalization gap is
 
-\[
+$$
 R(\theta)-\widehat R_S(\theta).
-\]
+$$
 
 ## 2. QML does not escape statistical learning theory
 
@@ -63,13 +63,13 @@ These forms can be scientifically more relevant than random train/test splits.
 
 ## 6. Symmetry and locality as inductive bias
 
-If the target law is invariant under a group \(G\), an equivariant or invariant model can reduce unnecessary hypothesis complexity. Similarly, local architectures can transfer across system size when the learned rule is local.
+If the target law is invariant under a group $G$, an equivariant or invariant model can reduce unnecessary hypothesis complexity. Similarly, local architectures can transfer across system size when the learned rule is local.
 
 This suggests a research principle:
 
-\[
+$$
 \text{use physical structure as inductive bias rather than maximizing generic expressivity}.
-\]
+$$
 
 ## References
 

@@ -4,27 +4,27 @@
 
 A kernel method represents data through pairwise similarities rather than explicitly optimizing a trainable feature extractor. A quantum feature map
 
-\[
+$$
 x\mapsto|\phi(x)\rangle
-\]
+$$
 
 can induce a kernel such as
 
-\[
+$$
 K(x,x')
 =
 |\langle\phi(x)|\phi(x')\rangle|^2.
-\]
+$$
 
 The quantum processor estimates kernel entries, while a classical kernel algorithm such as an SVM can perform the optimization.
 
 ## 2. Kernel matrix
 
-For training points \(x_1,\ldots,x_N\), define
+For training points $x_1,\ldots,x_N$, define
 
-\[
+$$
 K_{ij}=K(x_i,x_j).
-\]
+$$
 
 Once the kernel matrix is obtained, downstream learning can be classical. This makes quantum kernel methods conceptually distinct from end-to-end trained variational circuits.
 

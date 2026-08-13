@@ -8,7 +8,7 @@ Quantum reservoir computing (QRC) applies the same principle to quantum dynamics
 
 A generic workflow is
 
-\[
+$$
 u_t
 \longrightarrow
 \rho_t
@@ -18,17 +18,17 @@ u_t
 \mathbf z_t
 \longrightarrow
 \hat y_t,
-\]
+$$
 
-where \(u_t\) is an input sequence, \(\rho_t\) is the reservoir state, and \(\mathbf z_t\) contains measured observables.
+where $u_t$ is an input sequence, $\rho_t$ is the reservoir state, and $\mathbf z_t$ contains measured observables.
 
 ## 2. Fixed quantum dynamics
 
 Unlike a VQC, the internal quantum dynamics need not contain trainable gate parameters. One may evolve under a fixed Hamiltonian
 
-\[
+$$
 U=e^{-iH\Delta t}
-\]
+$$
 
 or a fixed open-system channel. The high-dimensional dynamics produce nonlinear temporal features after measurement and classical postprocessing.
 
@@ -45,13 +45,13 @@ Too rapid decoherence destroys memory; too little mixing can fail to generate us
 
 A common readout is linear,
 
-\[
+$$
 \hat y_t
 =
 \mathbf w^T\mathbf z_t+b,
-\]
+$$
 
-with \(\mathbf w\) trained classically. This can make optimization substantially simpler than training a deep PQC.
+with $\mathbf w$ trained classically. This can make optimization substantially simpler than training a deep PQC.
 
 ## 5. Physical reservoirs
 

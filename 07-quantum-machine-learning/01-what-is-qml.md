@@ -17,9 +17,9 @@ A useful taxonomy is based on whether data and processing are classical or quant
 
 A classical input
 
-\[
+$$
 x\in\mathcal X
-\]
+$$
 
 is encoded into a quantum state or circuit, processed quantum mechanically, and measured.
 
@@ -27,11 +27,11 @@ is encoded into a quantum state or circuit, processed quantum mechanically, and 
 
 The learner directly receives states or channels such as
 
-\[
+$$
 \rho_x,
 \qquad
 \mathcal E_x.
-\]
+$$
 
 This avoids first converting all quantum information into a classical description.
 
@@ -47,7 +47,7 @@ Quantum and classical components can be interleaved: classical feature extractio
 
 A common supervised QML model is
 
-\[
+$$
 x
 \xrightarrow{U_\phi(x)}
 |\phi(x)\rangle
@@ -55,11 +55,11 @@ x
 |\psi(x,\boldsymbol\theta)\rangle
 \xrightarrow{M}
 f_{\boldsymbol\theta}(x).
-\]
+$$
 
 The prediction is often an expectation value
 
-\[
+$$
 f_{\boldsymbol\theta}(x)
 =
 \langle0|
@@ -67,9 +67,9 @@ U_\phi^\dagger(x)U^\dagger(\boldsymbol\theta)
 M
 U(\boldsymbol\theta)U_\phi(x)
 |0\rangle.
-\]
+$$
 
-A classical optimizer updates \(\boldsymbol\theta\) using a training loss.
+A classical optimizer updates $\boldsymbol\theta$ using a training loss.
 
 This is **variational QML**, not the definition of QML itself.
 
@@ -103,19 +103,19 @@ Higher accuracy than a weak classical baseline is not sufficient evidence.
 
 QML research is fundamentally about questions such as
 
-\[
+$$
 \boxed{
 \text{Which learning tasks contain a useful quantum resource?}
 }
-\]
+$$
 
 and
 
-\[
+$$
 \boxed{
 \text{Under what access model is that resource unavailable or expensive classically?}
 }
-\]
+$$
 
 These questions are often more informative than asking whether a particular circuit architecture beats a neural network on a small benchmark.
 

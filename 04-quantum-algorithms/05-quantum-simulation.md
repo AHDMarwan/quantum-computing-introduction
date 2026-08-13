@@ -6,29 +6,29 @@ Simulating quantum systems was one of the original motivations for quantum compu
 
 The target is often time evolution under a Hamiltonian
 
-\[
+$$
 U(t)=e^{-iHt}.
-\]
+$$
 
 ## 2. Product-formula simulation
 
 Suppose
 
-\[
+$$
 H=\sum_{j=1}^m H_j.
-\]
+$$
 
 If the terms do not commute, one can approximate the evolution using a first-order Trotter product formula,
 
-\[
+$$
 e^{-iHt}
 \approx
 \left(
 \prod_{j=1}^m e^{-iH_jt/r}
 \right)^r.
-\]
+$$
 
-Larger \(r\) reduces the discretization error, at the cost of more gates. Higher-order formulas improve the accuracy-cost tradeoff.
+Larger $r$ reduces the discretization error, at the cost of more gates. Higher-order formulas improve the accuracy-cost tradeoff.
 
 ## 3. Beyond Trotterization
 
@@ -49,11 +49,11 @@ Digital simulation compiles the evolution into a universal gate set. Analog simu
 
 Preparing a simulated state is not equivalent to classically reading its full wavefunction. A useful simulation problem should specify observables or properties to estimate, for example
 
-\[
+$$
 \langle O(t)\rangle
 =
 \langle\psi(0)|e^{iHt}Oe^{-iHt}|\psi(0)\rangle.
-\]
+$$
 
 Measurement complexity can dominate when many observables or high precision are required.
 

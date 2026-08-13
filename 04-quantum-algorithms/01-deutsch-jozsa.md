@@ -4,9 +4,9 @@
 
 Given oracle access to a Boolean function
 
-\[
+$$
 f:\{0,1\}^n\rightarrow\{0,1\},
-\]
+$$
 
 promised to be either **constant** or **balanced**, determine which case holds.
 
@@ -16,24 +16,24 @@ A balanced function returns 0 on exactly half of its inputs and 1 on the other h
 
 The standard coherent oracle is
 
-\[
+$$
 U_f|x,y\rangle
 =
 |x,y\oplus f(x)\rangle.
-\]
+$$
 
 Preparing the target qubit in
 
-\[
+$$
 |-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt2}
-\]
+$$
 
 produces phase kickback:
 
-\[
+$$
 U_f|x\rangle|-\rangle
 =(-1)^{f(x)}|x\rangle|-\rangle.
-\]
+$$
 
 Thus function values become relative phases.
 
@@ -41,21 +41,21 @@ Thus function values become relative phases.
 
 Start from
 
-\[
+$$
 |0\rangle^{\otimes n}|1\rangle.
-\]
+$$
 
-Apply Hadamards, query \(U_f\), then apply \(H^{\otimes n}\) again to the input register.
+Apply Hadamards, query $U_f$, then apply $H^{\otimes n}$ again to the input register.
 
-Immediately before the final measurement, the amplitude of \(|0^n\rangle\) is
+Immediately before the final measurement, the amplitude of $|0^n\rangle$ is
 
-\[
+$$
 \frac{1}{2^n}
 \sum_{x\in\{0,1\}^n}
 (-1)^{f(x)}.
-\]
+$$
 
-If \(f\) is constant, the magnitude is 1. If \(f\) is balanced, the positive and negative terms cancel exactly, so the amplitude is 0.
+If $f$ is constant, the magnitude is 1. If $f$ is balanced, the positive and negative terms cancel exactly, so the amplitude is 0.
 
 Therefore a single oracle query distinguishes the two promised cases exactly.
 

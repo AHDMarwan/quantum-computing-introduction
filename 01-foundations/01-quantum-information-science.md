@@ -14,42 +14,42 @@ This chapter provides a map of the field before introducing the mathematical fou
 
 A classical bit takes a value in
 
-\[
+$$
 \{0,1\}.
-\]
+$$
 
 A qubit is described, in the pure-state formalism, by a normalized vector in a two-dimensional complex Hilbert space:
 
-\[
+$$
 |\psi\rangle
 =
 \alpha|0\rangle+
 \beta|1\rangle,
 \qquad
 |\alpha|^2+|\beta|^2=1.
-\]
+$$
 
-The coefficients \(\alpha\) and \(\beta\) are complex probability amplitudes. They are not ordinary probabilities. Probabilities arise when a measurement is performed.
+The coefficients $\alpha$ and $\beta$ are complex probability amplitudes. They are not ordinary probabilities. Probabilities arise when a measurement is performed.
 
 For example, a measurement in the computational basis gives
 
-\[
+$$
 p(0)=|\alpha|^2,
 \qquad
 p(1)=|\beta|^2.
-\]
+$$
 
-For \(n\) qubits, the state space is
+For $n$ qubits, the state space is
 
-\[
+$$
 \mathcal H=(\mathbb C^2)^{\otimes n},
-\]
+$$
 
 with dimension
 
-\[
+$$
 \dim(\mathcal H)=2^n.
-\]
+$$
 
 The exponential dimension of this Hilbert space is fundamental, but it should not be confused with an automatic exponential computational advantage. Measurement does not reveal all amplitudes of a quantum state, and useful quantum algorithms must organize the dynamics and interference so that relevant global information becomes observable with controlled resources.
 
@@ -61,11 +61,11 @@ Several recurring concepts appear throughout QIS.
 
 A quantum state may contain coherent amplitudes associated with multiple basis states:
 
-\[
+$$
 |\psi\rangle
 =
 \sum_x \alpha_x |x\rangle.
-\]
+$$
 
 Superposition is meaningful because the relative phases of the amplitudes can affect subsequent operations and measurements.
 
@@ -77,17 +77,17 @@ Quantum amplitudes can combine constructively or destructively. Quantum algorith
 
 A composite state is entangled when it cannot be written as a product of states of its subsystems. For example,
 
-\[
+$$
 |\Phi^+\rangle
 =
 \frac{|00\rangle+|11\rangle}{\sqrt2}
-\]
+$$
 
 cannot be expressed as
 
-\[
+$$
 |\psi_A\rangle\otimes|\psi_B\rangle.
-\]
+$$
 
 Entanglement is a central resource in quantum communication, computation, sensing, and information theory, but its presence alone does not establish a computational advantage.
 
@@ -99,15 +99,15 @@ Quantum measurements convert quantum information into classical outcomes. Genera
 
 Closed-system dynamics are represented by unitary transformations,
 
-\[
+$$
 \rho\mapsto U\rho U^\dagger,
-\]
+$$
 
 while general physical transformations, including noise and interaction with an environment, are represented by quantum channels,
 
-\[
+$$
 \rho\mapsto\mathcal E(\rho).
-\]
+$$
 
 These objects form the common mathematical language underlying quantum computing and quantum information theory.
 
@@ -202,12 +202,12 @@ For example, a gate-based quantum algorithm is not intrinsically a superconducti
 
 The circuit model represents a computation as a sequence of quantum operations. For a closed-system unitary computation,
 
-\[
+$$
 |\psi_{\mathrm{out}}\rangle
 =
 U_L U_{L-1}\cdots U_1
 |\psi_{\mathrm{in}}\rangle.
-\]
+$$
 
 Measurements are then performed to extract classical outcomes.
 
@@ -217,12 +217,12 @@ This is the dominant language for general-purpose quantum algorithms and for mos
 
 Adiabatic quantum computation uses controlled Hamiltonian evolution. A common interpolation is
 
-\[
+$$
 H(s)=(1-s)H_0+sH_P,
 \qquad 0\le s\le1,
-\]
+$$
 
-where \(H_0\) has an easily prepared ground state and \(H_P\) encodes the target problem.
+where $H_0$ has an easily prepared ground state and $H_P$ encodes the target problem.
 
 Under appropriate conditions, sufficiently slow evolution keeps the state close to the instantaneous ground state. The standard adiabatic model is polynomially equivalent to the circuit model.
 
@@ -236,9 +236,9 @@ Quantum annealing and universal adiabatic quantum computing should therefore not
 
 In analog quantum simulation, one engineers a controllable quantum system whose Hamiltonian directly reproduces or approximates the target dynamics:
 
-\[
+$$
 |\psi(t)\rangle=e^{-iHt}|\psi(0)\rangle.
-\]
+$$
 
 Rather than decomposing the full evolution into elementary digital gates, the physical dynamics themselves implement the computation or simulation.
 
@@ -288,7 +288,7 @@ A variational quantum algorithm (VQA) uses a parameterized quantum computation t
 
 A generic structure is
 
-\[
+$$
 \boldsymbol\theta_t
 \rightarrow
 U(\boldsymbol\theta_t)
@@ -298,7 +298,7 @@ C(\boldsymbol\theta_t)
 \text{classical optimizer}
 \rightarrow
 \boldsymbol\theta_{t+1}.
-\]
+$$
 
 The Variational Quantum Eigensolver (VQE) and Quantum Approximate Optimization Algorithm (QAOA) are prominent examples.
 
@@ -344,11 +344,11 @@ A particularly important distinction is between **classical data encoded into a 
 
 For classical data,
 
-\[
+$$
 x\in\mathcal X
 \quad\longmapsto\quad
 \rho(x),
-\]
+$$
 
 so the data-access and encoding model becomes part of the computational cost.
 
@@ -368,7 +368,7 @@ This distinction between physical and logical qubits becomes essential when disc
 
 The repository will distinguish carefully between
 
-\[
+$$
 \text{physical system},
 \quad
 \text{mathematical model},
@@ -378,7 +378,7 @@ The repository will distinguish carefully between
 \text{learning model},
 \quad
 \text{resource assumption}.
-\]
+$$
 
 When discussing claims of quantum advantage, we will ask what resource is being counted, what input-access model is assumed, what classical competitor is used, and whether the advantage concerns runtime, queries, samples, representation, or another operational quantity.
 

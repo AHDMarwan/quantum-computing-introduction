@@ -13,13 +13,13 @@ Variational quantum algorithms (VQAs) combine parameterized quantum computations
 
 ## Terminology hierarchy
 
-\[
+$$
 \boxed{
 \text{PQC: parameterized circuit}
 \neq
 \text{VQA: optimization framework}
 }
-\]
+$$
 
 An ansatz specifies a family of candidate states or transformations. A PQC can implement an ansatz. A VQA uses a parameterized quantum object, a cost estimator, and a classical update rule. VQE and QAOA are specific VQAs.
 

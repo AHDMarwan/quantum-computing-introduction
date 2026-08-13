@@ -2,21 +2,21 @@
 
 ## 1. Beyond two-level systems
 
-Continuous-variable (CV) quantum computing encodes information in systems with continuous observables, most prominently bosonic modes of the electromagnetic field. Instead of computational basis states \(|0\rangle,|1\rangle\) of a qubit, the basic operators are quadratures.
+Continuous-variable (CV) quantum computing encodes information in systems with continuous observables, most prominently bosonic modes of the electromagnetic field. Instead of computational basis states $|0\rangle,|1\rangle$ of a qubit, the basic operators are quadratures.
 
 For one mode,
 
-\[
+$$
 \hat x=\frac{\hat a+\hat a^\dagger}{\sqrt2},
 \qquad
 \hat p=\frac{\hat a-\hat a^\dagger}{i\sqrt2},
-\]
+$$
 
 with canonical commutation relation
 
-\[
+$$
 [\hat x,\hat p]=i.
-\]
+$$
 
 ## 2. Gaussian operations
 
@@ -46,9 +46,9 @@ QML models can be formulated directly in phase space using parameterized Gaussia
 
 A photonic platform can support discrete-variable encodings, continuous-variable encodings, or hybrid schemes. Therefore
 
-\[
+$$
 \text{photonics}\neq\text{CV computing}
-\]
+$$
 
 as a terminology statement: photonics is a hardware family, CV is a computational/information encoding framework.
 

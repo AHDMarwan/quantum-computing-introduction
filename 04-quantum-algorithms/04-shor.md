@@ -6,29 +6,29 @@ Shor's algorithm gives polynomial-time quantum algorithms for integer factorizat
 
 ## 2. Factoring reduces to order finding
 
-To factor an odd composite integer \(N\), choose \(a<N\) with
+To factor an odd composite integer $N$, choose $a<N$ with
 
-\[
+$$
 \gcd(a,N)=1.
-\]
+$$
 
-The order \(r\) of \(a\) modulo \(N\) is the smallest positive integer such that
+The order $r$ of $a$ modulo $N$ is the smallest positive integer such that
 
-\[
+$$
 a^r\equiv1\pmod N.
-\]
+$$
 
-If \(r\) is even and
+If $r$ is even and
 
-\[
+$$
 a^{r/2}\not\equiv-1\pmod N,
-\]
+$$
 
 then nontrivial factors can be obtained from
 
-\[
+$$
 \gcd(a^{r/2}\pm1,N).
-\]
+$$
 
 The quantum part solves order finding efficiently.
 
@@ -36,11 +36,11 @@ The quantum part solves order finding efficiently.
 
 Modular exponentiation creates a periodic structure related to
 
-\[
+$$
 f(x)=a^x\bmod N.
-\]
+$$
 
-A quantum Fourier transform or an equivalent phase-estimation formulation extracts information about the period \(r\). Classical continued-fraction processing then reconstructs a candidate order.
+A quantum Fourier transform or an equivalent phase-estimation formulation extracts information about the period $r$. Classical continued-fraction processing then reconstructs a candidate order.
 
 ## 4. Complexity perspective
 

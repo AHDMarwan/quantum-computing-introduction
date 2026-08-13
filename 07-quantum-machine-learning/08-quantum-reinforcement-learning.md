@@ -2,18 +2,18 @@
 
 ## 1. Reinforcement-learning setting
 
-In reinforcement learning (RL), an agent interacts sequentially with an environment. At time \(t\), the agent observes a state or observation \(s_t\), chooses an action \(a_t\), receives reward \(r_t\), and updates its policy.
+In reinforcement learning (RL), an agent interacts sequentially with an environment. At time $t$, the agent observes a state or observation $s_t$, chooses an action $a_t$, receives reward $r_t$, and updates its policy.
 
 The objective is commonly the expected discounted return
 
-\[
+$$
 J(\pi)
 =
 \mathbb E_\pi
 \left[
 \sum_{t=0}^{\infty}\gamma^tr_t
 \right].
-\]
+$$
 
 Quantum reinforcement learning asks how quantum information processing changes this framework.
 
@@ -32,14 +32,14 @@ These settings should not be conflated.
 
 A policy can be represented by a PQC,
 
-\[
+$$
 \pi_{\boldsymbol\theta}(a|s)
 =
 \operatorname{Tr}
 \left[E_a\rho_{\boldsymbol\theta}(s)\right],
-\]
+$$
 
-where \(E_a\) is a measurement effect associated with action \(a\).
+where $E_a$ is a measurement effect associated with action $a$.
 
 The policy is trained using policy-gradient, actor–critic, or other RL machinery.
 

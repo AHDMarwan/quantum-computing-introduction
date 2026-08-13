@@ -4,16 +4,16 @@
 
 A variational cost evaluated on hardware is typically estimated from finite shots. If
 
-\[
+$$
 C(\boldsymbol\theta)=\langle O\rangle_{\boldsymbol\theta},
-\]
+$$
 
 hardware returns an estimator
 
-\[
+$$
 \widehat C(\boldsymbol\theta)
 =C(\boldsymbol\theta)+\text{sampling noise}+\text{device error}.
-\]
+$$
 
 Optimization therefore occurs with noisy function information.
 
@@ -21,13 +21,13 @@ Optimization therefore occurs with noisy function information.
 
 For a gate
 
-\[
+$$
 U(\theta)=e^{-i\theta G}
-\]
+$$
 
 with a generator having an appropriate two-eigenvalue spectrum, derivatives can often be evaluated exactly through shifted circuit expectations. In the common Pauli-rotation convention,
 
-\[
+$$
 \frac{\partial C}{\partial\theta}
 =
 \frac12
@@ -36,17 +36,17 @@ C\!\left(\theta+\frac\pi2\right)
 -
 C\!\left(\theta-\frac\pi2\right)
 \right].
-\]
+$$
 
 This is not finite differencing: under the stated generator conditions it is an analytic identity.
 
 ## 3. Gradient cost
 
-If a model has \(P\) parameters, naively evaluating all parameter-shift gradients may require \(O(P)\) circuit settings per optimization step, multiplied by the shots needed for acceptable statistical precision.
+If a model has $P$ parameters, naively evaluating all parameter-shift gradients may require $O(P)$ circuit settings per optimization step, multiplied by the shots needed for acceptable statistical precision.
 
 The relevant training cost is therefore closer to
 
-\[
+$$
 \text{iterations}
 \times
 \text{circuit settings per iteration}
@@ -54,7 +54,7 @@ The relevant training cost is therefore closer to
 \text{shots per setting}
 \times
 \text{circuit execution cost}.
-\]
+$$
 
 ## 4. Optimizer families
 
@@ -76,9 +76,9 @@ Parameterized quantum states define a geometry related to the quantum Fisher inf
 
 For costs expressed as sums of observables,
 
-\[
+$$
 C=\sum_j c_j\langle P_j\rangle,
-\]
+$$
 
 shots can be allocated nonuniformly to reduce estimator variance. Measurement grouping and classical-shadow-style protocols can reduce cost in suitable observable regimes.
 

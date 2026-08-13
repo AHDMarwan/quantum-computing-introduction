@@ -15,16 +15,16 @@ A model can be
 
 For a loss
 
-\[
+$$
 L(\boldsymbol\theta),
-\]
+$$
 
 a barren plateau can arise when
 
-\[
+$$
 \operatorname{Var}
 \left[\partial_{\theta_j}L\right]
-\]
+$$
 
 decays exponentially with system size for the relevant parameter distribution and model family.
 
@@ -42,9 +42,9 @@ Noise can suppress gradients and distinguishability as circuit depth grows. Incr
 
 Thus
 
-\[
+$$
 \text{more shots}\not\Rightarrow\text{noise-free optimization}.
-\]
+$$
 
 ## 5. Architectural strategies
 
@@ -67,11 +67,11 @@ The scale of encoded features and initial parameters can strongly affect optimiz
 
 A useful interpretation is to ask whether a parameter perturbation creates a statistically detectable change in the measured output. If
 
-\[
+$$
 \rho_{\theta}
 \approx
 \rho_{\theta+\delta}
-\]
+$$
 
 under all measurements used by the loss, the optimizer has little information about the update direction.
 
