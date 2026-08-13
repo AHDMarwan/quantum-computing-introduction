@@ -1,8 +1,8 @@
 # Educational Figures
 
-These figures are generated with **Plotly** and then optimized as lightweight static SVGs for reliable rendering on GitHub.
+This directory contains lightweight SVG figures used to support the educational chapters in this repository. Some figures originate from Plotly prototypes and are then simplified or optimized for reliable rendering on GitHub.
 
-The goal is explanatory rather than decorative: each figure is used where geometry, state-space structure, probability distributions, correlations, or an algorithmic flow is easier to understand visually.
+The goal is explanatory rather than decorative: a figure is included when geometry, state-space structure, composition, or taxonomy is easier to understand visually than from prose alone.
 
 ## Foundations
 
@@ -26,7 +26,7 @@ Best read with [The Bloch Sphere](../../01-foundations/04-bloch-sphere.md) and [
 
 ![Measurement directions on the Bloch sphere](measurement-bases-bloch.svg)
 
-A projective qubit measurement can be viewed geometrically as choosing an axis. The angle between the state vector and measurement axis controls the outcome probabilities.
+A projective qubit measurement can be viewed geometrically as choosing an axis. The angle between the state vector and the measurement axis controls the outcome probabilities.
 
 Best read with [The Bloch Sphere](../../01-foundations/04-bloch-sphere.md) and [Measurements and POVMs](../../01-foundations/08-measurements-and-povms.md).
 
@@ -37,42 +37,6 @@ Best read with [The Bloch Sphere](../../01-foundations/04-bloch-sphere.md) and [
 The tensor product of two two-dimensional qubit spaces produces a four-dimensional joint state space with computational basis $|00\rangle$, $|01\rangle$, $|10\rangle$, and $|11\rangle$.
 
 Best read with [Composite Systems and Tensor Products](../../01-foundations/05-composite-systems.md).
-
-### Bell entanglement versus classical correlation
-
-![Bell correlations compared with a classical mixture](bell-correlations.svg)
-
-A Bell state and a classically correlated mixture can both have perfect $Z\otimes Z$ correlation. Measuring a complementary observable such as $X\otimes X$ distinguishes the two: correlation in one basis is not enough to establish entanglement.
-
-Best read with [Entanglement](../../01-foundations/06-entanglement.md).
-
-## Quantum algorithms
-
-### Grover rotation
-
-![Grover search as a rotation](grover-rotation.svg)
-
-Grover search evolves inside a two-dimensional good/bad subspace. Each Grover iterate rotates the state by $2\theta$ toward the good-state direction.
-
-Best read with [Grover Search and Amplitude Amplification](../../04-quantum-algorithms/02-grover.md).
-
-### Quantum phase estimation distribution
-
-![QPE probability distribution](qpe-probability.svg)
-
-If the target phase cannot be represented exactly with the available control qubits, QPE does not return one deterministic bit string. Instead, probability concentrates around the closest binary approximations.
-
-Best read with [Quantum Phase Estimation](../../04-quantum-algorithms/03-phase-estimation.md).
-
-## Variational quantum algorithms
-
-### Hybrid variational loop
-
-![Hybrid quantum-classical variational loop](vqa-hybrid-loop.svg)
-
-A VQA repeatedly evaluates a quantum objective, passes the result to a classical optimizer, updates circuit parameters, and executes the circuit again.
-
-Best read with [Variational Principle and Hybrid Loop](../../05-variational-quantum-algorithms/02-variational-principle.md).
 
 ## Quantum machine learning
 
@@ -94,6 +58,6 @@ Best read with [What Is Quantum Machine Learning?](../../07-quantum-machine-lear
 
 ## Figure policy
 
-A figure is added when it clarifies a mathematical or conceptual relationship that would otherwise require substantial prose. Decorative graphics are intentionally avoided.
+A figure is added only after the corresponding asset exists in this directory. This keeps the visual index free of broken image links.
 
-The static SVGs are optimized for GitHub. Interactive Plotly versions can be introduced later in a web edition without changing the chapter structure.
+Static SVGs are preferred for the GitHub edition because they remain sharp at different zoom levels and do not require JavaScript. Interactive figures can be added later in a web edition without changing the chapter structure.
