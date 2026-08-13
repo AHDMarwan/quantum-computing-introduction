@@ -2,18 +2,18 @@
 
 Variational quantum algorithms (VQAs) combine parameterized quantum computations with classical optimization. They form an **algorithmic paradigm**, not a single algorithm and not a synonym for quantum machine learning.
 
-This section is the bridge between canonical quantum algorithms and QML because it introduces the trainable circuit, noisy objective, measurement, and optimization machinery reused throughout variational quantum learning.
+This section is the bridge between canonical quantum algorithms and QML because it introduces trainable circuits, measured objectives, gradients, finite-shot estimation, and classical optimization.
 
 ## Recommended learning path
 
 ```text
 parameterized circuit
--> ansatz / hypothesis family
--> hybrid variational loop
--> VQE
--> QAOA
--> gradient and measurement estimation
--> trainability and barren plateaus
+→ ansatz / candidate family
+→ hybrid variational loop
+→ VQE
+→ QAOA
+→ gradients and measurement cost
+→ trainability and barren plateaus
 ```
 
 ## Contents
@@ -34,7 +34,7 @@ PQC
 = parameterized circuit object
 
 Ansatz
-= family of candidate states / transformations
+= family of candidate states or transformations
 
 VQA
 = hybrid optimization framework
@@ -57,37 +57,29 @@ Therefore
 
 although a PQC commonly implements an ansatz inside a VQA.
 
-See also [Terminology Map](../08-reference/terminology-map.md).
+See also the [Terminology Map](../08-reference/terminology-map.md).
 
-## Phase 4 chapter standard
+## How the chapters are organized
 
-The section analyzes each variational method through the following layers:
+Each variational method is studied through the following layers:
 
 ```text
 model family
--> objective
--> quantum estimator
--> classical optimizer
--> measurement cost
--> gradient information
--> trainability
--> noise
--> total resource accounting
+→ objective
+→ quantum measurement
+→ classical optimizer
+→ gradient information
+→ measurement cost
+→ noise
+→ trainability
+→ practical limitations
 ```
 
-The goal is to avoid the common shortcut
+This helps explain why a shallow circuit is not automatically a cheap algorithm: training may require many circuit evaluations and many measurement shots.
 
-```text
-short quantum circuit
-therefore
-cheap quantum algorithm
-```
+## Understanding total training cost
 
-which is generally false for hybrid optimization.
-
-## The total-training-cost principle
-
-A rough VQA training cost often has multiplicative structure:
+A rough VQA training cost often has the form
 
 ```math
 C_{\mathrm{train}}
@@ -101,102 +93,76 @@ N_{\mathrm{shots/setting}}
 C_{\mathrm{circuit}}.
 ```
 
-Depending on the algorithm, one must additionally count:
+Depending on the method, additional costs can come from state preparation, observable grouping, gradient estimation, error mitigation, compilation, and classical optimization.
 
-- state preparation,
-- observable grouping,
-- gradient estimation,
-- error mitigation,
-- classical optimization,
-- device communication latency,
-- calibration and compilation.
+The point is not to memorize this expression, but to recognize that variational algorithms are **repeated hybrid procedures**, not one-shot circuits.
 
-This is the relevant scale for comparing practical variational workflows.
+## Four common failure modes
 
-## Four distinct failure modes
-
-When a VQA performs poorly, ask which layer failed.
+When a VQA performs poorly, it helps to separate several possibilities.
 
 ### 1. Representation failure
 
-The ansatz does not contain a sufficiently good solution.
-
-```math
-\text{target}
-\notin
-\mathcal A
-```
-
-or cannot be approximated well enough.
+The ansatz cannot represent a sufficiently good solution.
 
 ### 2. Optimization failure
 
-A good solution exists in the ansatz, but the optimizer fails to find it.
-
-Possible causes include local structure, poor initialization, noisy gradients, or concentration.
+A good solution exists, but the optimizer does not find it.
 
 ### 3. Measurement failure
 
-The relevant objective or gradient cannot be estimated with affordable statistical precision.
+The objective or gradient cannot be estimated accurately enough with the available number of shots.
 
 ### 4. Hardware failure
 
-Noise biases or suppresses the information produced by the ideal circuit.
+Noise and device imperfections distort the ideal circuit behavior.
 
-These mechanisms interact, but separating them is essential for diagnosis.
+These mechanisms can interact, but the distinction is useful for learning how VQAs behave.
 
 ## Learning goals
 
 After completing this section, you should be able to:
 
 - distinguish PQCs, ansätze, VQAs, VQE, QAOA, and variational QML,
-- analyze circuit architecture using expressibility, symmetry, locality, and inductive bias,
+- explain what a trainable quantum circuit represents,
 - derive the variational upper bound for ground-state energy,
-- decompose VQA error into representation, optimization, sampling, and hardware components,
+- describe the hybrid quantum-classical optimization loop,
 - reconstruct VQE energies from Pauli expectation values,
-- identify measurement variance and shot allocation as algorithmic resources,
+- explain why measurement cost matters in VQE,
 - derive the MaxCut QAOA cost Hamiltonian,
-- explain cost and mixer evolution geometrically and operationally,
+- explain the roles of cost and mixer Hamiltonians,
 - distinguish QAOA from quantum annealing,
-- derive the parameter-shift gradient rule,
-- estimate full-gradient measurement cost,
-- compare parameter shift, SPSA, derivative-free methods, and quantum natural gradient,
-- distinguish sampling noise from hardware bias,
-- define barren plateaus through system-size gradient scaling,
-- distinguish concentration, symmetry, light-cone, redundancy, and noise mechanisms for small gradients,
-- and evaluate trainability mitigation through scaling evidence rather than small-system demonstrations.
+- derive the parameter-shift rule in the common Pauli-rotation setting,
+- compare several gradient and derivative-free optimization strategies,
+- distinguish finite-shot noise from hardware bias,
+- define barren plateaus and explain why they make training difficult,
+- and describe common strategies used to improve trainability.
 
 ## Variational algorithm comparison map
 
-| Concept | Object being optimized | Main quantum operation | Main practical bottleneck |
+| Concept | Object being optimized | Main quantum operation | Main learning point |
 |---|---|---|---|
-| Generic VQA | $C(\boldsymbol\theta)$ | PQC + measurements | repeated noisy optimization |
-| VQE | energy expectation | state ansatz + Pauli measurements | ansatz + measurement + optimization |
-| QAOA | discrete objective expectation | alternating cost/mixer layers | parameter training + depth + classical competition |
-| Gradient training | derivative estimates | shifted / perturbed circuits | shots × parameters × iterations |
-| Natural gradient | geometry-aware updates | cost + metric estimation | metric measurement / inversion |
-| Barren-plateau analysis | gradient distribution | repeated gradient probes | resolving exponentially weak signal |
+| Generic VQA | $C(\boldsymbol\theta)$ | PQC + measurements | Hybrid optimization loop |
+| VQE | Energy expectation | State ansatz + Pauli measurements | Variational eigensolving |
+| QAOA | Discrete objective expectation | Alternating cost/mixer layers | Structured variational optimization |
+| Gradient training | Derivative estimates | Shifted or perturbed circuits | Training requires repeated measurements |
+| Natural gradient | Geometry-aware update | Cost + metric estimation | Parameter space has nontrivial geometry |
+| Barren plateaus | Gradient statistics | Gradient probes | Expressivity and trainability can conflict |
 
-## A recurring audit checklist
+## A study checklist
 
-For any variational quantum paper, ask:
+When learning a new VQA, ask:
 
-1. What exactly is parameterized?
-2. What family does the ansatz represent?
-3. Which symmetries or physical constraints are preserved?
-4. How many trainable parameters are there?
-5. How many quantum circuit evaluations are required per optimizer step?
-6. How many measurements are required per circuit setting?
-7. Is the cost local or global?
-8. How do gradients scale with system size?
-9. Is initialization specified?
-10. What optimizer is used, and with what total evaluation budget?
-11. How is hardware noise separated from finite-shot noise?
-12. What classical baseline is relevant?
-13. Is performance shown only at fixed small size, or is scaling studied?
-14. Is the claimed advantage computational, representational, or merely empirical?
+1. What is parameterized?
+2. What family of states or operations can the ansatz represent?
+3. What quantity is being minimized or maximized?
+4. What measurements are required to estimate it?
+5. How are parameters updated?
+6. How many circuit evaluations are needed per update?
+7. What kinds of noise affect the result?
+8. What happens as the number of qubits or circuit depth grows?
 
-## Why this matters for QML
+## Connection to QML
 
 A common variational QML model has the form
 
@@ -212,32 +178,30 @@ U^\dagger(x,\boldsymbol\theta)
 \right].
 ```
 
-Training then introduces all of the VQA complications simultaneously:
+Training such a model reuses the same ideas developed here:
 
 ```text
 data encoding
 + PQC architecture
 + measurement
-+ finite-shot loss estimation
++ finite-shot estimation
 + gradient estimation
 + classical optimization
-+ generalization
 ```
 
-Therefore the VQA section supplies the optimization language needed to analyze VQCs, QNNs, QCNNs, and other trainable quantum models rigorously.
+Understanding VQAs first makes VQCs and QNNs much easier to interpret later.
 
 ## Suggested study method
 
 For each chapter:
 
 1. Identify the mathematical object being optimized.
-2. Write the hypothesis family explicitly.
+2. Write the ansatz explicitly.
 3. Derive the measured objective.
-4. Count how many circuit executions one optimizer iteration requires.
-5. Identify which errors are statistical and which are systematic.
-6. Ask whether trainability is demonstrated as a scaling statement.
-7. Complete at least one resource-accounting exercise.
-8. Treat every “quantum advantage” statement as incomplete until the classical baseline and total training budget are explicit.
+4. Follow one optimizer step from quantum measurement to classical update.
+5. Distinguish statistical measurement noise from device noise.
+6. Work through at least one explicit example.
+7. Complete the conceptual and computational exercises before moving on.
 
 ## Core references
 
